@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs25yy3dbkrts"]
+[gd_scene load_steps=6 format=3 uid="uid://cs25yy3dbkrts"]
 
 [ext_resource type="Texture2D" uid="uid://dkfvfbkvi2an3" path="res://assets/env/MainBG.png" id="1_hyk8p"]
+[ext_resource type="AudioStream" uid="uid://cf71ul06o0me4" path="res://assets/audio/birdsong.wav" id="1_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://bktsdjdatga4u" path="res://scenes/level_button/level_button.tscn" id="2_iuonh"]
+[ext_resource type="FontFile" uid="uid://cwlcemmidqdx4" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="3_k2fmo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3cfh"]
+font = ExtResource("3_k2fmo")
+font_size = 96
+font_color = Color(0.31714442, 0.8060326, 0.7090569, 1)
+shadow_size = 8
+shadow_color = Color(0.09411765, 0.09411765, 0.09411765, 0.78039217)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,6 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_l3cfh")
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -19,3 +33,45 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hyk8p")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -50.0
+offset_right = 154.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="LevelButton" parent="HBoxContainer" instance=ExtResource("2_iuonh")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("2_iuonh")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="HBoxContainer" instance=ExtResource("2_iuonh")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 73.0
+grow_horizontal = 2
+rotation = 0.034906585
+theme_override_constants/margin_top = 48
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ANGRY ANIMALS"
+label_settings = SubResource("LabelSettings_l3cfh")
+horizontal_alignment = 1
+vertical_alignment = 1

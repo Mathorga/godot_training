@@ -5,7 +5,6 @@ class_name Cup
 static var cups_count: int = 0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var level_over_v_box: VBoxContainer = $MarginContainer/LevelOverVBox
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(on_animation_finished)
