@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6wsbyjga68up"]
+
+[ext_resource type="Texture2D" uid="uid://bdstukwe4ip4w" path="res://assets/Dice.png" id="1_4fys5"]
+[ext_resource type="Script" uid="uid://dw5dw43id13ab" path="res://scenes/dice/dice.gd" id="1_oo8kb"]
+[ext_resource type="Shape2D" uid="uid://b8ax6ofq77l27" path="res://resources/dice_collision_shape.tres" id="2_fvt51"]
+
+[node name="Dice" type="Area2D" groups=["stoppable"]]
+script = ExtResource("1_oo8kb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4fys5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_fvt51")

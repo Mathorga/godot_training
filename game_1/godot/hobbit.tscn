@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbp4w36ygxpfm"]
+
+[ext_resource type="Script" uid="uid://cqnfd5vt23c6b" path="res://godot/hobbit.gd" id="1_7l15q"]
+[ext_resource type="Texture2D" uid="uid://cap4874pl5opy" path="res://godot/Hobbit.png" id="2_316py"]
+
+[node name="Hobbit" type="Node2D"]
+script = ExtResource("1_7l15q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_316py")

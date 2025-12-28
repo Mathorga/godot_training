@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf2ihhxi6736d"]
+
+[ext_resource type="Script" uid="uid://c3xsmko2h8nl3" path="res://scenes/ocean/ocean.gd" id="1_6lupf"]
+[ext_resource type="Texture2D" uid="uid://d2m6didikh60s" path="res://assets/Plane.png" id="1_pde3v"]
+[ext_resource type="Texture2D" uid="uid://5i62i6ewcs1f" path="res://assets/Helicopter.png" id="2_prgdk"]
+[ext_resource type="Texture2D" uid="uid://b8s3wbd3g8t8u" path="res://assets/Carrier.png" id="3_no58l"]
+[ext_resource type="Texture2D" uid="uid://cijiitvs7hvn2" path="res://assets/Water.png" id="4_gidh7"]
+
+[node name="Ocean" type="Node2D"]
+script = ExtResource("1_6lupf")
+
+[node name="Water" type="Sprite2D" parent="."]
+texture = ExtResource("4_gidh7")
+centered = false
+
+[node name="Carrier" type="Sprite2D" parent="."]
+position = Vector2(810, 177)
+texture = ExtResource("3_no58l")
+
+[node name="Plane" type="Sprite2D" parent="."]
+position = Vector2(162, 104)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pde3v")
+
+[node name="Helicopter" type="Sprite2D" parent="."]
+position = Vector2(179, 372)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_prgdk")

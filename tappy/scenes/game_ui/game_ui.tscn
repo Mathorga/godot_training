@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcowfqlji4or5"]
+
+[ext_resource type="Script" uid="uid://chl0lu7vl1f3q" path="res://scenes/game_ui/game_ui.gd" id="1_najyh"]
+[ext_resource type="LabelSettings" uid="uid://bd58d6qrjmotd" path="res://resources/game_label_32.tres" id="1_sq0em"]
+[ext_resource type="FontFile" uid="uid://dhunynepiqid2" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_1i64n"]
+[ext_resource type="AudioStream" uid="uid://by3llquanhoi3" path="res://assets/audio/game_over.wav" id="4_2cwxn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_najyh"]
+font = ExtResource("2_1i64n")
+font_size = 48
+font_color = Color(0.8061574, 0, 0.24504393, 1)
+outline_size = 10
+outline_color = Color(1, 0.5777087, 0.49624038, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2cwxn"]
+font = ExtResource("2_1i64n")
+font_size = 48
+font_color = Color(0.5495344, 0.59832036, 0.9071215, 1)
+outline_size = 10
+outline_color = Color(0.5992195, 0.29128733, 0.92184585, 1)
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_najyh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "000"
+label_settings = ExtResource("1_sq0em")
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_najyh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressSpaceLabel" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS SPACE"
+label_settings = SubResource("LabelSettings_2cwxn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2cwxn")
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]

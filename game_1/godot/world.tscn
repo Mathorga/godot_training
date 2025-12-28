@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhr5g01wfi8vt"]
+
+[ext_resource type="Script" uid="uid://bvtcuhh846p8g" path="res://godot/world.gd" id="1_enwu0"]
+[ext_resource type="Texture2D" uid="uid://o82icfc4v1m2" path="res://godot/Bg.png" id="2_nqyid"]
+[ext_resource type="PackedScene" uid="uid://bbp4w36ygxpfm" path="res://godot/hobbit.tscn" id="3_qsfkf"]
+[ext_resource type="PackedScene" uid="uid://caiw0dqd1jmxl" path="res://godot/wizard.tscn" id="4_7816x"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_enwu0")
+
+[node name="Bg" type="Sprite2D" parent="."]
+texture = ExtResource("2_nqyid")
+centered = false
+
+[node name="Hobbit" parent="." instance=ExtResource("3_qsfkf")]
+position = Vector2(126, 452)
+
+[node name="Hobbit2" parent="." instance=ExtResource("3_qsfkf")]
+position = Vector2(269, 523)
+rotation_speed = 1.912
+
+[node name="Hobbit3" parent="." instance=ExtResource("3_qsfkf")]
+position = Vector2(396, 383)
+rotation_speed = 6.802
+
+[node name="Hobbit4" parent="." instance=ExtResource("3_qsfkf")]
+position = Vector2(578, 437)
+rotation_speed = 20.072
+
+[node name="Wizard" parent="." instance=ExtResource("4_7816x")]
+position = Vector2(771, 406)
+
+[connection signal="spell_cast" from="Wizard" to="." method="_on_wizard_spell_cast"]
