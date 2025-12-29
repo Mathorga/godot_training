@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="MemoryMadness"
+run/main_scene="uid://b80051ck1e5ik"
+config/features=PackedStringArray("4.5", "Mobile")
+
+[autoload]
+
+SignalHub="*res://globals/signal_hub.gd"
+ImageManager="*res://globals/image_manager.gd"
+SoundManager="*res://globals/sound_manager.gd"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/window_width_override=2048
+window/size/window_height_override=1536
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="mobile"

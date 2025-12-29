@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://7i4chf7osq76"]
+
+[ext_resource type="Texture2D" uid="uid://d317hfg8t3dfx" path="res://assets/env/elementWood019.png" id="1_h47aw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6as6t"]
+size = Vector2(70, 220)
+
+[node name="VerticalBarrier" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h47aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6as6t")
