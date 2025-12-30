@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="LevelsDataResource" load_steps=9 format=3 uid="uid://b71y22yjcoo2v"]
+
+[ext_resource type="Script" uid="uid://b33kuu3wxm2n7" path="res://classes/level_setting_resource.gd" id="1_nmgc8"]
+[ext_resource type="Script" uid="uid://4u2pflepde3x" path="res://classes/levels_data_resource.gd" id="2_w06xx"]
+
+[sub_resource type="Resource" id="Resource_nmgc8"]
+script = ExtResource("1_nmgc8")
+level_number = 1
+rows = 2
+cols = 2
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[sub_resource type="Resource" id="Resource_w06xx"]
+script = ExtResource("1_nmgc8")
+level_number = 2
+rows = 3
+cols = 4
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[sub_resource type="Resource" id="Resource_7g56k"]
+script = ExtResource("1_nmgc8")
+level_number = 3
+rows = 4
+cols = 4
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[sub_resource type="Resource" id="Resource_ulhcq"]
+script = ExtResource("1_nmgc8")
+level_number = 4
+rows = 4
+cols = 6
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[sub_resource type="Resource" id="Resource_3nbdq"]
+script = ExtResource("1_nmgc8")
+level_number = 5
+rows = 5
+cols = 6
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[sub_resource type="Resource" id="Resource_q4rdy"]
+script = ExtResource("1_nmgc8")
+level_number = 6
+rows = 6
+cols = 7
+metadata/_custom_type_script = "uid://b33kuu3wxm2n7"
+
+[resource]
+script = ExtResource("2_w06xx")
+levels = Array[ExtResource("1_nmgc8")]([SubResource("Resource_nmgc8"), SubResource("Resource_w06xx"), SubResource("Resource_7g56k"), SubResource("Resource_ulhcq"), SubResource("Resource_3nbdq"), SubResource("Resource_q4rdy")])
+metadata/_custom_type_script = "uid://4u2pflepde3x"
