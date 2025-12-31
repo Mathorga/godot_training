@@ -1,9 +1,8 @@
-res://scenes/master/master.tscn
-res://classes/image_files_list_resource.gd
-res://tools/image_filler.gd
-res://resources/image_files_list.tres
-res://globals/image_manager.gd
-res://classes/level_setting_resource.gd
-res://classes/levels_data_resource.gd
 res://resources/levels_data.tres
-res://classes/level_data_selector.gd
+res://scenes/main/main.tscn
+res://scenes/master/master.tscn
+res://globals/image_manager.gd
+res://scenes/level_button/level_button.tscn
+res://scenes/level_button/level_button.gd
+res://scenes/front_sprite/front_sprite.tscn
+res://scenes/front_sprite/front_sprite.gd

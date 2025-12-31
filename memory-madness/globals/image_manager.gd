@@ -10,7 +10,7 @@ const FRAME_IMAGES: Array[Texture2D] = [
 var image_list: Array[Texture2D] = []
 
 func _enter_tree() -> void:
-	var ifl_resource: ImageFilesListResource = load("res://classes/image_files_list_resource.gd")
+	var ifl_resource: ImageFilesListResource = load("res://resources/image_files_list.tres")
 	for file in ifl_resource.file_names:
 		image_list.append(load(file))
 
