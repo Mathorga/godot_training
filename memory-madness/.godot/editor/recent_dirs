@@ -1,5 +1,7 @@
-res://scenes/front_sprite
+res://scenes/memory_tile
 res://resources
+res://scenes/game
+res://scenes/front_sprite
 res://scenes/level_button
 res://scenes/main
 res://resources/

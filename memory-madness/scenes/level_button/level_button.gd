@@ -25,3 +25,4 @@ func set_label_text() -> void:
 
 func on_pressed() -> void:
 	print("Pressed level button %d" % level_number)
+	SignalHub.emit_level_selected(level_number)

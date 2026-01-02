@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://5rq82ik7i04h"]
+
+[ext_resource type="Script" uid="uid://b6ukuqfnuv275" path="res://scenes/game/game.gd" id="1_bdhmt"]
+[ext_resource type="LabelSettings" uid="uid://8u5ogyymqoqj" path="res://resources/label_22_black_label_settings.tres" id="2_5i0tg"]
+[ext_resource type="Texture2D" uid="uid://dk16kfwtqa4yi" path="res://assets/ui/blue_button00.png" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://v3bn5nusx3tk" path="res://scenes/memory_tile/memory_tile.tscn" id="2_bdhmt"]
+[ext_resource type="Texture2D" uid="uid://cfdyqoybqtnnr" path="res://assets/ui/grey_button00.png" id="2_kelw5"]
+[ext_resource type="Texture2D" uid="uid://ceu42wmi08uyy" path="res://assets/ui/green_button00.png" id="3_lfrn8"]
+[ext_resource type="FontFile" uid="uid://xdd3sguxmrw4" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="5_lfrn8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5i0tg"]
+font = ExtResource("5_lfrn8")
+font_size = 32
+outline_size = 9
+outline_color = Color(0.23151812, 0.23151812, 0.23151812, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bdhmt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 6
+
+[node name="MemoryTile" parent="HBoxContainer/GridContainer" instance=ExtResource("2_bdhmt")]
+layout_mode = 2
+
+[node name="MemoryTile2" parent="HBoxContainer/GridContainer" instance=ExtResource("2_bdhmt")]
+layout_mode = 2
+
+[node name="MemoryTile3" parent="HBoxContainer/GridContainer" instance=ExtResource("2_bdhmt")]
+layout_mode = 2
+
+[node name="MemoryTile4" parent="HBoxContainer/GridContainer" instance=ExtResource("2_bdhmt")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MovesTitleLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Moves"
+label_settings = ExtResource("2_5i0tg")
+vertical_alignment = 1
+
+[node name="MovesCountLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+label_settings = ExtResource("2_5i0tg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PairsTitleLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pairs"
+label_settings = ExtResource("2_5i0tg")
+vertical_alignment = 1
+
+[node name="PairsCountLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "X/X"
+label_settings = ExtResource("2_5i0tg")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ExitButton" type="TextureButton" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_kelw5")
+texture_pressed = ExtResource("3_lfrn8")
+texture_hover = ExtResource("2_7h61r")
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_5i0tg")
+horizontal_alignment = 1
+vertical_alignment = 2

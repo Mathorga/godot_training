@@ -1,8 +1,10 @@
-Control
 TextureRect
-AudioStreamPlayer
-Label
 TextureButton
+Control
 HBoxContainer
+Label
 VBoxContainer
+MarginContainer
+GridContainer
+AudioStreamPlayer
 ColorRect
