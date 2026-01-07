@@ -7,6 +7,7 @@ extends Control
 func _enter_tree() -> void:
 	SignalHub.level_selected.connect(on_level_selected)
 	SignalHub.game_exit_pressed.connect(on_exit_pressed)
+	SignalHub.game_over.connect(on_game_over)
 
 func _ready() -> void:
 	on_exit_pressed() 
@@ -22,3 +23,6 @@ func on_level_selected(_level_number: int) -> void:
 func on_exit_pressed() -> void:
 	SoundManager.play_sound(music, SoundManager.SOUND_MAIN_MENU)
 	show_game_screen(false)
+
+func on_game_over(_moves_count: int) -> void:
+	SoundManager.play_sound(music, SoundManager.SOUND_GAME_OVER)

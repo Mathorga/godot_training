@@ -5,6 +5,7 @@ class_name LevelButton
 @export var level_number: int = 0
 
 @onready var label: Label = $Label
+@onready var click_sound: AudioStreamPlayer = $ClickSound
 
 func _enter_tree() -> void:
 	pressed.connect(on_pressed)
@@ -24,5 +25,5 @@ func set_label_text() -> void:
 	]
 
 func on_pressed() -> void:
-	print("Pressed level button %d" % level_number)
 	SignalHub.emit_level_selected(level_number)
+	SoundManager.play_button_click(click_sound)

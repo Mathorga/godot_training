@@ -15,6 +15,7 @@ func get_rows() -> int:
 func get_cols() -> int:
 	return cols
 
+## Returns the number of pairs needed for the level.
 func get_target_pairs() -> int:
 	@warning_ignore("integer_division")
 	return (rows * cols) / 2
