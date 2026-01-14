@@ -12,6 +12,9 @@ const MAX_FALL_SPEED: float = 500.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
 
+func _enter_tree() -> void:
+	add_to_group(Constants.PLAYER_GROUP)
+
 func _physics_process(delta: float) -> void:
 	# Apply gravity.
 	# Here we're using delta because we're not setting the value of velocity directly,
