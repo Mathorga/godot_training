@@ -1,5 +1,7 @@
 extends EnemyBase
 
+class_name FrogEnemy
+
 const JUMP_VELOCITY: Vector2 = Vector2(100.0, -300.0)
 
 @onready var jump_timer: Timer = $JumpTimer

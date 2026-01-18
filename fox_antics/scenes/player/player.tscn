@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dfw1l1lyui3h6"]
+[gd_scene load_steps=30 format=3 uid="uid://dfw1l1lyui3h6"]
 
 [ext_resource type="Texture2D" uid="uid://bb4626t13ar4d" path="res://assets/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ctbbjmy60idy4" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -192,6 +192,9 @@ states/grounded/position = Vector2(395.23346, 94.25486)
 transitions = ["Start", "grounded", SubResource("AnimationNodeStateMachineTransition_h17s1"), "grounded", "air", SubResource("AnimationNodeStateMachineTransition_gmlin"), "air", "grounded", SubResource("AnimationNodeStateMachineTransition_je7p5")]
 graph_offset = Vector2(-249.77995, -64.35015)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
+size = Vector2(12, 14)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_dovo2")
@@ -228,3 +231,11 @@ theme_override_font_sizes/font_size = 96
 text = "line_ 1
 line_2
 line_3"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_gmlin")

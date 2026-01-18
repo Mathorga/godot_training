@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://w701jxgekkld"]
+
+[ext_resource type="PackedScene" uid="uid://c6x0ip8ofwrry" path="res://scenes/enemies/enemy_base.tscn" id="1_3wvyu"]
+[ext_resource type="Script" uid="uid://ciwwpgu0hwxug" path="res://scenes/enemies/eagle_enemy/eagle_enemy.gd" id="2_jg7ba"]
+[ext_resource type="Texture2D" uid="uid://v0e16l0650lo" path="res://assets/enemies/eagle/eagle-attack.png" id="3_uylc8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jg7ba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plmnc"]
+atlas = ExtResource("3_uylc8")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwg7w"]
+atlas = ExtResource("3_uylc8")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp0gm"]
+atlas = ExtResource("3_uylc8")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk2rh"]
+atlas = ExtResource("3_uylc8")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nek3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plmnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwg7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp0gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk2rh")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uylc8"]
+radius = 21.0
+
+[node name="EagleEnemy" instance=ExtResource("1_3wvyu")]
+collision_mask = 0
+script = ExtResource("2_jg7ba")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_jg7ba")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_nek3a")
+animation = &"fly"
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_uylc8")
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="4"]
+target_position = Vector2(0, 300)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
