@@ -48,6 +48,7 @@ radius = 21.0
 [node name="EagleEnemy" instance=ExtResource("1_3wvyu")]
 collision_mask = 0
 script = ExtResource("2_jg7ba")
+fly_velocity = Vector2(35, 15)
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_jg7ba")
@@ -59,8 +60,11 @@ animation = &"fly"
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_uylc8")
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="4"]
+[node name="PlayerDetector" type="RayCast2D" parent="." index="4"]
 target_position = Vector2(0, 300)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="FlipTimer" type="Timer" parent="." index="5"]
+wait_time = 3.0

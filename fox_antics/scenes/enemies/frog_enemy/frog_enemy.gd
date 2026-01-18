@@ -29,9 +29,6 @@ func _physics_process(delta: float) -> void:
 
 	face_player()
 
-func face_player() -> void:
-	animated_sprite_2d.flip_h = player_ref.global_position.x > global_position.x
-
 func try_jump() -> void:
 	if not seen_player:
 		return
