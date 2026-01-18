@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bthynxdr6kf5y"]
+[gd_scene load_steps=14 format=3 uid="uid://bthynxdr6kf5y"]
 
 [ext_resource type="PackedScene" uid="uid://c6x0ip8ofwrry" path="res://scenes/enemies/enemy_base.tscn" id="1_56v7v"]
 [ext_resource type="Texture2D" uid="uid://dxadhej6lyuqe" path="res://assets/enemies/frog/frog_sheet.png" id="2_0kvsu"]
+[ext_resource type="Script" uid="uid://cuboktbmegog3" path="res://scenes/enemies/frog_enemy/frog_enemy.gd" id="2_vvyd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kvsu"]
 size = Vector2(22, 22)
@@ -72,6 +73,7 @@ animations = [{
 size = Vector2(28, 22)
 
 [node name="FrogEnemy" instance=ExtResource("1_56v7v")]
+script = ExtResource("2_vvyd3")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_0kvsu")
@@ -83,3 +85,6 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_vvyd3")
+
+[node name="JumpTimer" type="Timer" parent="." index="4"]
+one_shot = true
