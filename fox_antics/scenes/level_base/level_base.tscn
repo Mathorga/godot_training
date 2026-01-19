@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://b3sqac532wkps"]
+[gd_scene load_steps=10 format=4 uid="uid://b3sqac532wkps"]
 
 [ext_resource type="Texture2D" uid="uid://dlaod4p25g32p" path="res://assets/tiles/Terrain (16x16).png" id="1_myc1q"]
+[ext_resource type="PackedScene" uid="uid://bgnt3313kdsfd" path="res://scenes/object_maker/object_maker.tscn" id="1_p2h7h"]
 [ext_resource type="PackedScene" uid="uid://dfw1l1lyui3h6" path="res://scenes/player/player.tscn" id="2_u6jkd"]
 [ext_resource type="PackedScene" uid="uid://bhcv8bklhbpn1" path="res://scenes/enemies/snail_enemy/snail_enemy.tscn" id="3_3tlib"]
 [ext_resource type="PackedScene" uid="uid://bthynxdr6kf5y" path="res://scenes/enemies/frog_enemy/frog_enemy.tscn" id="4_ncu3c"]
@@ -243,6 +244,8 @@ terrain_set_0/terrain_0/color = Color(0.35081327, 0.44344434, 0.9847668, 1)
 sources/0 = SubResource("TileSetAtlasSource_u6jkd")
 
 [node name="LevelBase" type="Node2D"]
+
+[node name="ObjectMaker" parent="." instance=ExtResource("1_p2h7h")]
 
 [node name="Platforms" type="TileMapLayer" parent="."]
 position = Vector2(0, -768)

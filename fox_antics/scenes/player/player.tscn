@@ -242,5 +242,5 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_gmlin")
 
 [node name="Shooter" parent="." instance=ExtResource("4_lvxji")]
-speed = 100.0
+speed = 200.0
 bullet_key = 2
