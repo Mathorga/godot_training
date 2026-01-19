@@ -4,6 +4,7 @@ extends EnemyBase
 
 @onready var player_detector: RayCast2D = $PlayerDetector
 @onready var flip_timer: Timer = $FlipTimer
+@onready var shooter: Shooter = $Shooter
 
 var fly_direction: Vector2 = Vector2.ZERO
 
@@ -28,7 +29,7 @@ func fly_to_player() -> void:
 
 func shoot() -> void:
 	if player_detector.is_colliding():
-		print("EAGLE SHOOT")
+		shooter.shoot(global_position.direction_to(player_ref.global_position))
 
 func on_screen_entered() -> void:
 	super.on_screen_entered()
