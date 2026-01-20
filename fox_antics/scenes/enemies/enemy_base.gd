@@ -38,5 +38,5 @@ func die() -> void:
 func on_screen_entered() -> void:
 	pass
 
-func on_hitbox_area_entered() -> void:
+func on_hitbox_area_entered(_area: Area2D) -> void:
 	die()
