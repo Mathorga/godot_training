@@ -32,6 +32,8 @@ func face_player() -> void:
 	animated_sprite_2d.flip_h = player_ref.global_position.x > global_position.x
 
 func die() -> void:
+	SignalHub.emit_create_object_requested(global_position, Constants.ObjectType.PICKUP)
+	SignalHub.emit_create_object_requested(global_position, Constants.ObjectType.EXPLOSION)
 	set_physics_process(false)
 	queue_free()
 
