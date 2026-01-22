@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1x11suqh7ksx"]
+
+[ext_resource type="Texture2D" uid="uid://cx1vs5esh6jal" path="res://assets/backgrounds/game_background_3/game_background_3.1.png" id="1_hyk8p"]
+[ext_resource type="FontFile" uid="uid://b64oa2spv3o35" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_iuonh"]
+[ext_resource type="AudioStream" uid="uid://d1xv70o3npfw" path="res://assets/sound/Farm Frolics.ogg" id="3_l3cfh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2fmo"]
+font = ExtResource("2_iuonh")
+font_size = 108
+font_color = Color(0.9522906, 0.47230983, 0.59961003, 1)
+outline_size = 10
+outline_color = Color(0.8251617, 3.3691526e-07, 0.43558136, 1)
+shadow_size = 18
+shadow_color = Color(0, 0, 0, 0.6117647)
+shadow_offset = Vector2(0, 8)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hyk8p")
+expand_mode = 3
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FOXY ANTICS"
+label_settings = SubResource("LabelSettings_k2fmo")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_l3cfh")
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 5

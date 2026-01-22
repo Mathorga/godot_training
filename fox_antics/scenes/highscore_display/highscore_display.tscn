@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dunl7ftjkjt3i"]
+
+[ext_resource type="LabelSettings" uid="uid://btsajdw8x8lut" path="res://resources/highscore_display_label_settings.tres" id="1_4aasp"]
+[ext_resource type="Script" uid="uid://cgwwa1t2b7yts" path="res://scenes/highscore_display/highscore_display.gd" id="1_uenxn"]
+[ext_resource type="FontFile" uid="uid://b64oa2spv3o35" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_jotfa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uenxn"]
+font = ExtResource("2_jotfa")
+font_size = 24
+font_color = Color(0.44284493, 0.80082554, 0.8767812, 1)
+outline_size = 6
+outline_color = Color(0, 0.3251025, 0.5772355, 1)
+
+[node name="HighscoreDisplay" type="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -25.0
+offset_right = 0.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uenxn")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 2
+text = "0000"
+label_settings = ExtResource("1_4aasp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 2
+text = "20260122"
+label_settings = SubResource("LabelSettings_uenxn")
+horizontal_alignment = 1
+vertical_alignment = 1

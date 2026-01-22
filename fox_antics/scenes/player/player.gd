@@ -21,6 +21,7 @@ const HURT_JUMP_VELOCITY: Vector2 = Vector2(0.0, -130.0)
 @onready var hurt_timer: Timer = $HurtTimer
 
 var _is_hurt: bool = false
+var _invincible: bool = false
 
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
@@ -88,6 +89,18 @@ func check_fall_off() -> void:
 	if global_position.y > fall_off_y:
 		queue_free()
 
+func go_invincible() -> void:
+	if _invincible:
+		return
+
+	_invincible = true
+
+	var tween: Tween = create_tween()
+	for i in range(20):
+		tween.tween_property(sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.1)
+		tween.tween_property(sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
+	tween.tween_property(self, "_invincible", false, 0.0)
+
 func _apply_hurt_jump() -> void:
 	_is_hurt = true
 	play_sfx(DAMAGE_SOUND)
@@ -95,6 +108,11 @@ func _apply_hurt_jump() -> void:
 	set_deferred("velocity", HURT_JUMP_VELOCITY)
 
 func _apply_hit() -> void:
+	if _invincible:
+		return
+
+	go_invincible()
+
 	_apply_hurt_jump()
 
 func _on_hitbox_area_entered(_area: Area2D) -> void:
