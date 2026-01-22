@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b3sqac532wkps"]
+[gd_scene load_steps=10 format=4 uid="uid://b3sqac532wkps"]
 
 [ext_resource type="Texture2D" uid="uid://dlaod4p25g32p" path="res://assets/tiles/Terrain (16x16).png" id="1_myc1q"]
 [ext_resource type="PackedScene" uid="uid://bgnt3313kdsfd" path="res://scenes/object_maker/object_maker.tscn" id="1_p2h7h"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhcv8bklhbpn1" path="res://scenes/enemies/snail_enemy/snail_enemy.tscn" id="3_3tlib"]
 [ext_resource type="PackedScene" uid="uid://bthynxdr6kf5y" path="res://scenes/enemies/frog_enemy/frog_enemy.tscn" id="4_ncu3c"]
 [ext_resource type="PackedScene" uid="uid://w701jxgekkld" path="res://scenes/enemies/eagle_enemy/eagle_enemy.tscn" id="5_kr674"]
+[ext_resource type="AudioStream" uid="uid://dtcca3dnaa4d0" path="res://assets/sound/Flowing Rocks.ogg" id="7_p2h7h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6jkd"]
 resource_name = "platforms"
@@ -262,3 +263,8 @@ position = Vector2(359, -188)
 
 [node name="EagleEnemy" parent="." instance=ExtResource("5_kr674")]
 position = Vector2(272, -322)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p2h7h")
+autoplay = true
+parameters/looping = true

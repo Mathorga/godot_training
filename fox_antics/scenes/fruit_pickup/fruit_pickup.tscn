@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://sgkbvkxfegt8"]
+[gd_scene load_steps=78 format=3 uid="uid://sgkbvkxfegt8"]
 
 [ext_resource type="Script" uid="uid://d36w5iyhsyojb" path="res://scenes/fruit_pickup/fruit_pickup.gd" id="1_4w3ut"]
 [ext_resource type="Texture2D" uid="uid://kfaofne3aws1" path="res://assets/items/Bananas.png" id="1_87vt3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chsnbqwekjn0d" path="res://assets/items/Kiwi.png" id="3_4w3ut"]
 [ext_resource type="Texture2D" uid="uid://xvd1ix6fi7h8" path="res://assets/items/Melon.png" id="4_vx6nj"]
 [ext_resource type="PackedScene" uid="uid://0ijwqmkc7b6g" path="res://scenes/life_timer/life_timer.tscn" id="5_pr4vm"]
+[ext_resource type="AudioStream" uid="uid://djam53ocwccxy" path="res://assets/sound/pickup.wav" id="7_vx6nj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emwii"]
 atlas = ExtResource("1_87vt3")
@@ -515,10 +516,13 @@ script = ExtResource("1_4w3ut")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5n60d")
-animation = &"melon"
+animation = &"banana"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_87vt3")
 
 [node name="LifeTimer" parent="." instance=ExtResource("5_pr4vm")]
 life_time = 10.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vx6nj")

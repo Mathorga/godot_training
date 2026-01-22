@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://khi532tiwte"]
+[gd_scene load_steps=13 format=3 uid="uid://khi532tiwte"]
 
 [ext_resource type="Texture2D" uid="uid://bmcbey7ho0n4q" path="res://assets/explosion/enemy-deadth.png" id="1_plwnx"]
 [ext_resource type="Script" uid="uid://bp07x458b286u" path="res://scenes/explosion/explosion.gd" id="2_12s4q"]
+[ext_resource type="AudioStream" uid="uid://cfrda4y4jby1y" path="res://assets/sound/pickup3.ogg" id="3_f5lqq"]
+[ext_resource type="AudioStream" uid="uid://d0mfcso18mqnm" path="res://assets/sound/pickup5.ogg" id="4_piueb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12s4q"]
 atlas = ExtResource("1_plwnx")
@@ -53,9 +55,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nt3ar"]
+streams_count = 2
+stream_0/stream = ExtResource("3_f5lqq")
+stream_1/stream = ExtResource("4_piueb")
+
 [node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_782gf")
 autoplay = "default"
 frame = 5
 frame_progress = 1.0
 script = ExtResource("2_12s4q")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_nt3ar")
