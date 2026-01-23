@@ -34,6 +34,7 @@ func face_player() -> void:
 func die() -> void:
 	SignalHub.emit_create_object_requested(global_position, Constants.ObjectType.PICKUP)
 	SignalHub.emit_create_object_requested(global_position, Constants.ObjectType.EXPLOSION)
+	SignalHub.emit_scored(points)
 	set_physics_process(false)
 	queue_free()
 

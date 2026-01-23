@@ -29,5 +29,7 @@ func _on_area_entered(_area: Area2D) -> void:
 	# Then play the collect sound.
 	sound.play()
 
+	SignalHub.emit_scored(points)
+
 func _on_sound_finished() -> void:
 	queue_free()

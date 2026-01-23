@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://baw3lpdh74ogo"]
+
+[ext_resource type="Texture2D" uid="uid://cilxoqt3sj42g" path="res://assets/items/pixel heart 2.png" id="1_48c2t"]
+[ext_resource type="Script" uid="uid://pqegyti0mvth" path="res://scenes/hud/hud.gd" id="1_c45xl"]
+[ext_resource type="LabelSettings" uid="uid://bvr1uhyv8toy4" path="res://resources/hud_score_label_settings.tres" id="1_cgeww"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c45xl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0000"
+label_settings = ExtResource("1_cgeww")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="H1" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_48c2t")
+stretch_mode = 4
+
+[node name="H2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_48c2t")
+stretch_mode = 4
+
+[node name="H3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_48c2t")
+stretch_mode = 4
+
+[node name="H4" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_48c2t")
+stretch_mode = 4
+
+[node name="H5" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_48c2t")
+stretch_mode = 4
