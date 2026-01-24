@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b3sqac532wkps"]
+[gd_scene load_steps=13 format=4 uid="uid://b3sqac532wkps"]
 
 [ext_resource type="Texture2D" uid="uid://dlaod4p25g32p" path="res://assets/tiles/Terrain (16x16).png" id="1_myc1q"]
 [ext_resource type="PackedScene" uid="uid://bgnt3313kdsfd" path="res://scenes/object_maker/object_maker.tscn" id="1_p2h7h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://w701jxgekkld" path="res://scenes/enemies/eagle_enemy/eagle_enemy.tscn" id="5_kr674"]
 [ext_resource type="AudioStream" uid="uid://dtcca3dnaa4d0" path="res://assets/sound/Flowing Rocks.ogg" id="7_p2h7h"]
 [ext_resource type="PackedScene" uid="uid://baw3lpdh74ogo" path="res://scenes/hud/hud.tscn" id="9_cr6la"]
+[ext_resource type="PackedScene" uid="uid://hv11bcn0b4lc" path="res://scenes/spikes_ball/spikes_ball.tscn" id="9_v0a34"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6jkd"]
 resource_name = "platforms"
@@ -244,6 +245,12 @@ terrain_set_0/terrain_0/name = "pink_grass"
 terrain_set_0/terrain_0/color = Color(0.35081327, 0.44344434, 0.9847668, 1)
 sources/0 = SubResource("TileSetAtlasSource_u6jkd")
 
+[sub_resource type="Curve2D" id="Curve2D_48c0a"]
+_data = {
+"points": PackedVector2Array(21.194471, 19.504114, -21.194471, -19.504114, 487, -126, -17.553703, 18.463894, 17.553703, -18.463894, 487, -224, -25.74543, -19.244059, 25.74543, 19.244059, 622, -224, 18.333868, -24.315128, -18.333868, 24.315128, 622, -126, 27.045706, 21.064444, -27.045706, -21.064444, 487, -126)
+}
+point_count = 5
+
 [node name="LevelBase" type="Node2D"]
 
 [node name="ObjectMaker" parent="." instance=ExtResource("1_p2h7h")]
@@ -273,3 +280,12 @@ parameters/looping = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("9_cr6la")]
+
+[node name="SpikesBallsContainer" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="SpikesBallsContainer"]
+curve = SubResource("Curve2D_48c0a")
+
+[node name="SpikesBall" parent="SpikesBallsContainer/Path2D" instance=ExtResource("9_v0a34")]
+position = Vector2(487, -126)
+spin_speed = 720.0
