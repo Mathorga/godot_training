@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b3sqac532wkps"]
+[gd_scene load_steps=15 format=4 uid="uid://b3sqac532wkps"]
 
 [ext_resource type="Texture2D" uid="uid://dlaod4p25g32p" path="res://assets/tiles/Terrain (16x16).png" id="1_myc1q"]
 [ext_resource type="PackedScene" uid="uid://bgnt3313kdsfd" path="res://scenes/object_maker/object_maker.tscn" id="1_p2h7h"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://w701jxgekkld" path="res://scenes/enemies/eagle_enemy/eagle_enemy.tscn" id="5_kr674"]
 [ext_resource type="AudioStream" uid="uid://dtcca3dnaa4d0" path="res://assets/sound/Flowing Rocks.ogg" id="7_p2h7h"]
 [ext_resource type="PackedScene" uid="uid://baw3lpdh74ogo" path="res://scenes/hud/hud.tscn" id="9_cr6la"]
-[ext_resource type="PackedScene" uid="uid://hv11bcn0b4lc" path="res://scenes/spikes_ball/spikes_ball.tscn" id="9_v0a34"]
+[ext_resource type="PackedScene" uid="uid://bspfyhcdgjo3o" path="res://scenes/moving_platform/tween_moving_platform.tscn" id="10_uakon"]
+[ext_resource type="PackedScene" uid="uid://dvuxwcu7301pf" path="res://scenes/moving_platform/pf_moving_platform.tscn" id="10_v0a34"]
+[ext_resource type="PackedScene" uid="uid://bgtjjvghuwol2" path="res://scenes/floor_spikes/floor_spikes.tscn" id="11_uakon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6jkd"]
 resource_name = "platforms"
@@ -283,9 +285,35 @@ parameters/looping = true
 
 [node name="SpikesBallsContainer" type="Node" parent="."]
 
-[node name="Path2D" type="Path2D" parent="SpikesBallsContainer"]
+[node name="PFMovingPlatforms" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="PFMovingPlatforms"]
 curve = SubResource("Curve2D_48c0a")
 
-[node name="SpikesBall" parent="SpikesBallsContainer/Path2D" instance=ExtResource("9_v0a34")]
+[node name="PFMovingPlatform" parent="PFMovingPlatforms/Path2D" instance=ExtResource("10_v0a34")]
 position = Vector2(487, -126)
-spin_speed = 720.0
+
+[node name="TweenMovingPlatforms" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="TweenMovingPlatforms"]
+position = Vector2(-31, -186)
+
+[node name="Marker2D2" type="Marker2D" parent="TweenMovingPlatforms"]
+position = Vector2(-31, -101)
+
+[node name="Marker2D3" type="Marker2D" parent="TweenMovingPlatforms"]
+position = Vector2(66, -101)
+
+[node name="Marker2D4" type="Marker2D" parent="TweenMovingPlatforms"]
+position = Vector2(115, -212)
+
+[node name="TweenMovingPlatform" parent="TweenMovingPlatforms" node_paths=PackedStringArray("targets") instance=ExtResource("10_uakon")]
+targets = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="FloorSpikes" parent="Spikes" instance=ExtResource("11_uakon")]
+position = Vector2(641, -15)
+
+[node name="FloorSpikes2" parent="Spikes" instance=ExtResource("11_uakon")]
+position = Vector2(623, -15)
