@@ -296,16 +296,16 @@ position = Vector2(487, -126)
 [node name="TweenMovingPlatforms" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="TweenMovingPlatforms"]
-position = Vector2(-31, -186)
+position = Vector2(-193, -190)
 
 [node name="Marker2D2" type="Marker2D" parent="TweenMovingPlatforms"]
-position = Vector2(-31, -101)
+position = Vector2(-194, -101)
 
 [node name="Marker2D3" type="Marker2D" parent="TweenMovingPlatforms"]
 position = Vector2(66, -101)
 
 [node name="Marker2D4" type="Marker2D" parent="TweenMovingPlatforms"]
-position = Vector2(115, -212)
+position = Vector2(71, -182)
 
 [node name="TweenMovingPlatform" parent="TweenMovingPlatforms" node_paths=PackedStringArray("targets") instance=ExtResource("10_uakon")]
 targets = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
