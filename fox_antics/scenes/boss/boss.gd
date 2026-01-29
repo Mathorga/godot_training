@@ -40,6 +40,7 @@ func reduce_lives() -> void:
 
 	if lives <= 0:
 		SignalHub.emit_scored(points)
+		SignalHub.emit_boss_killed()
 		queue_free()
 
 func set_invincible(on: bool) -> void:

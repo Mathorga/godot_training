@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b3sqac532wkps"]
+[gd_scene load_steps=17 format=4 uid="uid://b3sqac532wkps"]
 
 [ext_resource type="Texture2D" uid="uid://dlaod4p25g32p" path="res://assets/tiles/Terrain (16x16).png" id="1_myc1q"]
 [ext_resource type="PackedScene" uid="uid://bgnt3313kdsfd" path="res://scenes/object_maker/object_maker.tscn" id="1_p2h7h"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dvuxwcu7301pf" path="res://scenes/moving_platform/pf_moving_platform.tscn" id="10_v0a34"]
 [ext_resource type="PackedScene" uid="uid://bgtjjvghuwol2" path="res://scenes/floor_spikes/floor_spikes.tscn" id="11_uakon"]
 [ext_resource type="PackedScene" uid="uid://bc38mm6wnjcd1" path="res://scenes/boss/boss.tscn" id="12_0oed1"]
+[ext_resource type="PackedScene" uid="uid://cuk4k0n1jf3w1" path="res://scenes/checkpoint/checkpoint.tscn" id="13_od1d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6jkd"]
 resource_name = "platforms"
@@ -320,4 +321,7 @@ position = Vector2(641, -15)
 position = Vector2(623, -15)
 
 [node name="Boss" parent="." instance=ExtResource("12_0oed1")]
-position = Vector2(1411, -16)
+position = Vector2(1379, -15)
+
+[node name="Checkpoint" parent="." instance=ExtResource("13_od1d2")]
+position = Vector2(1459, -16)
