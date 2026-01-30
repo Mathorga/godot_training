@@ -5,6 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://bvr1uhyv8toy4" path="res://resources/hud_score_label_settings.tres" id="1_cgeww"]
 
 [node name="Hud" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,32 +33,32 @@ size_flags_vertical = 0
 text = "0000"
 label_settings = ExtResource("1_cgeww")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HeartsContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="H1" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="H1" type="TextureRect" parent="MarginContainer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="H2" type="TextureRect" parent="MarginContainer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="H3" type="TextureRect" parent="MarginContainer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H4" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="H4" type="TextureRect" parent="MarginContainer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H5" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="H5" type="TextureRect" parent="MarginContainer/HeartsContainer"]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4

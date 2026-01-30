@@ -11,7 +11,8 @@ const RUN_SPEED: float = 100.0
 const MAX_FALL_SPEED: float = 500.0
 const HURT_JUMP_VELOCITY: Vector2 = Vector2(0.0, -130.0)
 
-@export var fall_off_y: float = 1000.0 
+@export var fall_off_y: float = 100.0 
+@export var lives: int = 3 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
@@ -29,6 +30,12 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	hit_box.area_entered.connect(_on_hitbox_area_entered)
 	hurt_timer.timeout.connect(_on_hurt_timer_timeout)
+
+	call_deferred("_late_init")
+
+func _late_init() -> void:
+	SignalHub.emit_player_hit(lives, false)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Continuous shooting.
@@ -79,15 +86,17 @@ func flip_sprite() -> void:
 
 func update_debug_label() -> void:
 	var debug_string: String = ""
-	debug_string += "floor: %s \n" % is_on_floor()
+	debug_string += "floor: %s HP: %d\n" % [is_on_floor(), lives]
 	debug_string += "v: %.1f | %.1f\n" % [velocity.x, velocity.y]
 	debug_string += "p: %.1f | %.1f" % [global_position.x, global_position.y]
 
 	debug_label.text = debug_string
 
 func check_fall_off() -> void:
-	if global_position.y > fall_off_y:
-		queue_free()
+	if global_position.y < fall_off_y:
+		return
+
+	reduce_lives(lives)
 
 func go_invincible() -> void:
 	if _invincible:
@@ -101,6 +110,18 @@ func go_invincible() -> void:
 		tween.tween_property(sprite_2d, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
 	tween.tween_property(self, "_invincible", false, 0.0)
 
+## Returns true if player has not died as a result of the amount of lives taken.
+func reduce_lives(amount: int) -> bool:
+	lives -= amount
+
+	SignalHub.emit_player_hit(lives, true)
+
+	if lives <= 0:
+		set_physics_process(false)
+		return false
+
+	return true
+
 func _apply_hurt_jump() -> void:
 	_is_hurt = true
 	play_sfx(DAMAGE_SOUND)
@@ -109,6 +130,9 @@ func _apply_hurt_jump() -> void:
 
 func _apply_hit() -> void:
 	if _invincible:
+		return
+
+	if not reduce_lives(1):
 		return
 
 	go_invincible()
