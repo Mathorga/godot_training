@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dfw1l1lyui3h6"]
+[gd_scene format=3 uid="uid://dfw1l1lyui3h6"]
 
 [ext_resource type="Texture2D" uid="uid://bb4626t13ar4d" path="res://assets/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://ctbbjmy60idy4" path="res://scenes/player/player.gd" id="1_dovo2"]
@@ -213,33 +213,31 @@ graph_offset = Vector2(-249.77995, -64.35015)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(12, 14)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=501500528]
 collision_layer = 0
 script = ExtResource("1_dovo2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=507216277]
 texture = ExtResource("1_8afob")
 hframes = 19
 frame = 13
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135137956]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_dovo2")
 
-[node name="PlayerCamera" parent="." instance=ExtResource("3_gmlin")]
+[node name="PlayerCamera" parent="." unique_id=748127120 instance=ExtResource("3_gmlin")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_p47bc")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=536485768]
+libraries/ = SubResource("AnimationLibrary_p47bc")
+autoplay = &"idle"
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=23248583]
 tree_root = SubResource("AnimationNodeStateMachine_0owmy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="DebugLabel" type="Label" parent="."]
+[node name="DebugLabel" type="Label" parent="." unique_id=1770819481]
 offset_left = -16.0
 offset_top = -62.0
 offset_right = 275.0
@@ -250,20 +248,20 @@ text = "line_ 1
 line_2
 line_3"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." unique_id=1295251898]
 collision_layer = 2
 collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=735874904]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_gmlin")
 
-[node name="Shooter" parent="." instance=ExtResource("4_lvxji")]
+[node name="Shooter" parent="." unique_id=955438521 instance=ExtResource("4_lvxji")]
 speed = 200.0
 bullet_key = 2
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=820611828]
 
-[node name="HurtTimer" type="Timer" parent="."]
+[node name="HurtTimer" type="Timer" parent="." unique_id=1495004883]
 wait_time = 0.5
 one_shot = true

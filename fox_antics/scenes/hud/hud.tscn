@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://baw3lpdh74ogo"]
+[gd_scene format=3 uid="uid://baw3lpdh74ogo"]
 
 [ext_resource type="Texture2D" uid="uid://cilxoqt3sj42g" path="res://assets/items/pixel heart 2.png" id="1_48c2t"]
 [ext_resource type="Script" uid="uid://pqegyti0mvth" path="res://scenes/hud/hud.gd" id="1_c45xl"]
 [ext_resource type="LabelSettings" uid="uid://bvr1uhyv8toy4" path="res://resources/hud_score_label_settings.tres" id="1_cgeww"]
+[ext_resource type="LabelSettings" uid="uid://d3svjeg3ndnp8" path="res://resources/alert_title_label_settings.tres" id="4_0bx4p"]
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" unique_id=1492970762]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c45xl")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1664873902]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,39 +27,115 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer" unique_id=1138932812]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "0000"
 label_settings = ExtResource("1_cgeww")
 
-[node name="HeartsContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HeartsContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2030098561]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="H1" type="TextureRect" parent="MarginContainer/HeartsContainer"]
+[node name="H1" type="TextureRect" parent="MarginContainer/HeartsContainer" unique_id=636980341]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H2" type="TextureRect" parent="MarginContainer/HeartsContainer"]
+[node name="H2" type="TextureRect" parent="MarginContainer/HeartsContainer" unique_id=1642597158]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H3" type="TextureRect" parent="MarginContainer/HeartsContainer"]
+[node name="H3" type="TextureRect" parent="MarginContainer/HeartsContainer" unique_id=1424993579]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H4" type="TextureRect" parent="MarginContainer/HeartsContainer"]
+[node name="H4" type="TextureRect" parent="MarginContainer/HeartsContainer" unique_id=877169227]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
 
-[node name="H5" type="TextureRect" parent="MarginContainer/HeartsContainer"]
+[node name="H5" type="TextureRect" parent="MarginContainer/HeartsContainer" unique_id=2048574544]
 layout_mode = 2
 texture = ExtResource("1_48c2t")
 stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1058766547]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.013327681, 0.03424421, 0.118727796, 0.81960785)
+
+[node name="GameOverUI" type="VBoxContainer" parent="ColorRect" unique_id=2115922621]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/GameOverUI" unique_id=325915795]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Over"
+label_settings = ExtResource("4_0bx4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/GameOverUI" unique_id=745913501]
+layout_mode = 2
+text = "Press Shoot"
+label_settings = ExtResource("1_cgeww")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelCompleteUI" type="VBoxContainer" parent="ColorRect" unique_id=1183156259]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/LevelCompleteUI" unique_id=1261231199]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Complete"
+label_settings = ExtResource("4_0bx4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/LevelCompleteUI" unique_id=2145280461]
+layout_mode = 2
+text = "Press Shoot"
+label_settings = ExtResource("1_cgeww")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompleteTimer" type="Timer" parent="." unique_id=1758682836]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=2028741815]

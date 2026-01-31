@@ -5,6 +5,7 @@ signal create_object_requested(pos: Vector2, obj_type: Constants.ObjectType)
 signal scored(points: int)
 signal boss_killed
 signal player_hit(lives: int, shake: bool)
+signal level_complete(complete: bool)
 
 func emit_create_bullet_requested(pos: Vector2, dir: Vector2, speed: float, obj_type: Constants.ObjectType) -> void:
 	create_bullet_requested.emit(pos, dir, speed, obj_type)
@@ -20,3 +21,6 @@ func emit_boss_killed() -> void:
 
 func emit_player_hit(lives: int, shake: bool) -> void:
 	player_hit.emit(lives, shake)
+
+func emit_level_complete(complete: bool) -> void:
+	level_complete.emit(complete )

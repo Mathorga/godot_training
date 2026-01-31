@@ -13,7 +13,7 @@ func _ready() -> void:
 	animation_tree.animation_finished.connect(_on_animation_finished)
 
 func _on_area_entered(_area: Area2D) -> void:
-	print("CAVERNONE")
+	SignalHub.emit_level_complete(true)
 
 func _on_boss_killed() -> void:
 	_boss_killed = true

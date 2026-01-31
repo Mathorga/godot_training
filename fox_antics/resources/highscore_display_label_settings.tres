@@ -1,4 +1,4 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://btsajdw8x8lut"]
+[gd_resource type="LabelSettings" format=3 uid="uid://btsajdw8x8lut"]
 
 [ext_resource type="FontFile" uid="uid://b64oa2spv3o35" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_j7rhg"]
 
