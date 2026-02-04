@@ -1,11 +1,17 @@
 extends Node
 
-const MAIN = preload("uid://c1x11suqh7ksx")
-const LEVEL_BASE = preload("uid://b3sqac532wkps")
+const MAIN: PackedScene = preload("uid://c1x11suqh7ksx")
+const LEVEL_BASE: PackedScene = preload("uid://b3sqac532wkps")
+
+const LEVELS: Array[PackedScene] = [
+	preload("uid://dr882ljmoa662"),
+	preload("uid://eblw2oi36xkl")
+]
 
 const SCORES_PATH = "user://high_scores.tres"
 
 var high_scores: HighScores = HighScores.new()
+var _current_level: int = -1
 
 # score to carry over between levels
 var cached_score: int:
@@ -24,12 +30,18 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	save_high_scores()
 
+func load_scene(scene: PackedScene) -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(scene)
+
 func load_main() -> void:
 	cached_score = 0
-	get_tree().change_scene_to_packed(MAIN)
+	_current_level = -1
+	load_scene(MAIN)
 
 func load_next_level() -> void:
-	get_tree().change_scene_to_packed(LEVEL_BASE)
+	_current_level = (_current_level + 1) % LEVELS.size()
+	load_scene(LEVELS[_current_level])
 
 func load_high_scores() -> void:
 	if ResourceLoader.exists(SCORES_PATH):

@@ -29,7 +29,7 @@ func fly_to_player() -> void:
 
 func shoot() -> void:
 	if player_detector.is_colliding():
-		shooter.shoot(global_position.direction_to(player_ref.global_position))
+		shooter.shoot_player()
 
 func on_screen_entered() -> void:
 	super.on_screen_entered()

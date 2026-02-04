@@ -9,7 +9,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 		GameManager.load_next_level()
 
 func _ready() -> void:
-	get_tree().paused = false
 	_set_scores()
 
 func _set_scores() -> void:

@@ -20,12 +20,22 @@ var _can_continue: bool = false
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("exit"):
 		GameManager.load_main()
+		return
+
+	if Input.is_action_just_pressed("next"):
+		GameManager.load_next_level()
+		return
 
 	if not _can_continue:
 		return
 
 	if Input.is_action_just_pressed("shoot"):
-		GameManager.load_main()
+		if game_over_ui.visible:
+			GameManager.load_main()
+			return
+
+		GameManager.load_next_level()
+		return
 
 func _enter_tree() -> void:
 	SignalHub.scored.connect(_on_scored)

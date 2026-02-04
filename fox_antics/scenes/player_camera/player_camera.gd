@@ -1,4 +1,5 @@
 extends Camera2D
+class_name PlayerCamera
 
 ## Amount of shaking in pixels.
 @export var shake_amount: float = 5.0

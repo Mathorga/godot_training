@@ -12,7 +12,9 @@ const MAX_FALL_SPEED: float = 500.0
 const HURT_JUMP_VELOCITY: Vector2 = Vector2(0.0, -130.0)
 
 @export var fall_off_y: float = 100.0 
-@export var lives: int = 3 
+@export var lives: int = 3
+@export var camera_min: Vector2 = Vector2(-10000, 10000)
+@export var camera_max: Vector2 = Vector2(10000, -10000)
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
@@ -20,6 +22,7 @@ const HURT_JUMP_VELOCITY: Vector2 = Vector2(0.0, -130.0)
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var hit_box: Area2D = $HitBox
 @onready var hurt_timer: Timer = $HurtTimer
+@onready var player_camera: PlayerCamera = $PlayerCamera
 
 var _is_hurt: bool = false
 var _invincible: bool = false
@@ -31,11 +34,8 @@ func _ready() -> void:
 	hit_box.area_entered.connect(_on_hitbox_area_entered)
 	hurt_timer.timeout.connect(_on_hurt_timer_timeout)
 
+	_set_camera_limits()
 	call_deferred("_late_init")
-
-func _late_init() -> void:
-	SignalHub.emit_player_hit(lives, false)
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Continuous shooting.
@@ -58,6 +58,15 @@ func _physics_process(delta: float) -> void:
 	update_debug_label()
 
 	check_fall_off()
+
+func _late_init() -> void:
+	SignalHub.emit_player_hit(lives, false)
+
+func _set_camera_limits() -> void:
+	player_camera.limit_bottom = camera_min.y
+	player_camera.limit_left = camera_min.x
+	player_camera.limit_right = camera_max.x
+	player_camera.limit_top = camera_max.y
 
 func play_sfx(sfx: AudioStream) -> void:
 	sound.stop()

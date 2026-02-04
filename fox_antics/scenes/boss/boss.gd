@@ -24,12 +24,7 @@ func activate_collisions() -> void:
 	hit_box.set_deferred("monitorable", true)
 
 func shoot() -> void:
-	var player: Player = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
-
-	if player == null:
-		return
-
-	shooter.shoot(shooter.global_position.direction_to(player.global_position))
+	shooter.shoot_player()
 
 func tween_hit() -> void:
 	var tween: Tween = create_tween()

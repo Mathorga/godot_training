@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://kli1hmi64sye"]
+
+[ext_resource type="Script" uid="uid://oix10hmmj4mh" path="res://scenes/parallax_background/parallax_background.gd" id="1_lq2ot"]
+
+[node name="ParallaxBackground" type="Node2D" unique_id=1265169237]
+script = ExtResource("1_lq2ot")
+level_number = null
+y_offset = null
+layer_scale = null
