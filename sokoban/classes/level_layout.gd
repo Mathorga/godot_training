@@ -1,9 +1,7 @@
 class_name LevelLayout
 
-
 var _player_start: Vector2i = Vector2i.ZERO
 var _tile_layers: TileLayers = TileLayers.new()
-
 
 func add_tile_to_layer(tx: int, ty: int, lt: TileLayers.LayerType) -> void:
 	_tile_layers.add_coord(Vector2i(tx, ty), lt)
