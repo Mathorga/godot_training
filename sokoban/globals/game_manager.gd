@@ -1,11 +1,18 @@
 extends Node
 
+const MAIN_SCENE: PackedScene = preload("uid://dt12mjj45tb81")
+const LEVEL_SCENE: PackedScene = preload("uid://3erogswmru6e")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var current_level: int = -1
 
+func load_main_scene() -> void:
+	current_level = -1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	get_tree().change_scene_to_packed(MAIN_SCENE)
+
+func load_level_scene(level_number: int) -> void:
+	if level_number > 0:
+		current_level = level_number
+
+	if current_level > 0:
+		get_tree().change_scene_to_packed(LEVEL_SCENE)

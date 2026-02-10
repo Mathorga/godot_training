@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://3erogswmru6e"]
+
+[ext_resource type="Texture2D" uid="uid://825yw4tyq1b" path="res://assets/Purple.png" id="1_h3e3j"]
+[ext_resource type="Script" uid="uid://dvs1pdgv3mtn" path="res://scenes/level/level.gd" id="1_nbgty"]
+
+[sub_resource type="TileSet" id="TileSet_nbgty"]
+tile_size = Vector2i(32, 32)
+
+[node name="Level" type="Node2D" unique_id=1616221721]
+script = ExtResource("1_nbgty")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=275980144]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1660600782]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h3e3j")
+stretch_mode = 1
+
+[node name="TileLayers" type="Node2D" parent="." unique_id=1656642123]
+
+[node name="Floor" type="TileMapLayer" parent="TileLayers" unique_id=339377537]
+tile_set = SubResource("TileSet_nbgty")
