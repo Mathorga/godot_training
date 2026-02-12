@@ -44,7 +44,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CheckMark" type="TextureRect" parent="." unique_id=1538835094]
-visible = false
 layout_mode = 1
 offset_left = 2.0
 offset_top = 2.0

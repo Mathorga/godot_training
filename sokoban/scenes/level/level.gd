@@ -14,6 +14,8 @@ const TILE_ATLAS_ID: int = 0
 
 var _tile_size: int = 0
 var _current_player_tile: Vector2i = Vector2i.ZERO
+var _game_over: bool = false
+var _moves_count: int = 0
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("exit"):
@@ -22,6 +24,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("reload"):
 		get_tree().reload_current_scene()
+		return
+
+	# Avoid detecting player movement input on game over.
+	if _game_over:
 		return
 
 	var move_dir: Vector2i = Vector2i.ZERO
@@ -39,6 +45,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 	if move_dir != Vector2i.ZERO:
 		_move_player(move_dir)
+
+func _check_game_state() -> void:
+	for tile_coord in target_tiles.get_used_cells():
+		if not _is_cell_box(tile_coord):
+			return
+
+	_game_over = true
+	var best: bool = GameManager.set_level_completed("%d" % GameManager.current_level, _moves_count)
 
 func _is_cell_wall(cell_coord: Vector2i) -> bool:
 	return cell_coord in wall_tiles.get_used_cells()
@@ -76,6 +90,8 @@ func _move_player(move_dir: Vector2i) -> void:
 		_move_box(dst_tile_coord, move_dir)
 
 	_place_player_on_tile(dst_tile_coord)
+	_moves_count += 1
+	_check_game_state()
 
 func _ready() -> void:
 	_tile_size = floor_tiles.tile_set.tile_size.x
