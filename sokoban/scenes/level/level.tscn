@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dvs1pdgv3mtn" path="res://scenes/level/level.gd" id="1_nbgty"]
 [ext_resource type="TileSet" uid="uid://bjca3yq6onpfw" path="res://resources/sokoban_tile_set.tres" id="3_i166f"]
 [ext_resource type="PackedScene" uid="uid://bgbqws5kgntbt" path="res://scenes/player/player.tscn" id="4_qkmgm"]
+[ext_resource type="PackedScene" uid="uid://coj5nyer0s3gl" path="res://scenes/game_ui/game_ui.tscn" id="5_hnne4"]
 
 [node name="Level" type="Node2D" unique_id=1616221721]
 script = ExtResource("1_nbgty")
@@ -37,3 +38,7 @@ tile_set = ExtResource("3_i166f")
 [node name="Camera" type="Camera2D" parent="." unique_id=655869266]
 
 [node name="Player" parent="." unique_id=16060871 instance=ExtResource("4_qkmgm")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1693997486]
+
+[node name="GameUI" parent="CanvasLayer2" unique_id=2082422403 instance=ExtResource("5_hnne4")]

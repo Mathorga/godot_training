@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://coj5nyer0s3gl"]
+
+[ext_resource type="Script" uid="uid://b11568nrev5rx" path="res://scenes/game_ui/game_ui.gd" id="1_1i64n"]
+[ext_resource type="LabelSettings" uid="uid://ckxc4imc8uhtb" path="res://resources/ui_std_label_settings.tres" id="1_sq0em"]
+
+[node name="GameUI" type="Control" unique_id=2082422403]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1i64n")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=809489738]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer" unique_id=189222484]
+layout_mode = 2
+
+[node name="LevelInfoBox" type="HBoxContainer" parent="MarginContainer/Labels" unique_id=1033696018]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Labels/LevelInfoBox" unique_id=1355392263]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+text = "Level"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/Labels/LevelInfoBox" unique_id=1671831017]
+layout_mode = 2
+text = "-"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1
+
+[node name="MovesInfoBox" type="HBoxContainer" parent="MarginContainer/Labels" unique_id=1670686548]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Labels/MovesInfoBox" unique_id=615514043]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+text = "Moves"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="MarginContainer/Labels/MovesInfoBox" unique_id=1804276852]
+layout_mode = 2
+text = "-"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1
+
+[node name="BestInfoBox" type="HBoxContainer" parent="MarginContainer/Labels" unique_id=1226671902]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Labels/BestInfoBox" unique_id=373396954]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+text = "Best"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1
+
+[node name="BestLabel" type="Label" parent="MarginContainer/Labels/BestInfoBox" unique_id=1111907231]
+layout_mode = 2
+text = "-"
+label_settings = ExtResource("1_sq0em")
+vertical_alignment = 1

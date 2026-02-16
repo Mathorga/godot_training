@@ -11,6 +11,7 @@ const TILE_ATLAS_ID: int = 0
 @onready var box_tiles: TileMapLayer = $TileLayers/BoxTiles
 @onready var camera: Camera2D = $Camera
 @onready var player: AnimatedSprite2D = $Player
+@onready var game_ui: GameUI = $CanvasLayer2/GameUI
 
 var _tile_size: int = 0
 var _current_player_tile: Vector2i = Vector2i.ZERO
@@ -91,6 +92,7 @@ func _move_player(move_dir: Vector2i) -> void:
 
 	_place_player_on_tile(dst_tile_coord)
 	_moves_count += 1
+	game_ui.set_moves_label(_moves_count)
 	_check_game_state()
 
 func _ready() -> void:
