@@ -54,6 +54,7 @@ func _check_game_state() -> void:
 
 	_game_over = true
 	var best: bool = GameManager.set_level_completed("%d" % GameManager.current_level, _moves_count)
+	game_ui.show_game_over(_moves_count, best)
 
 func _is_cell_wall(cell_coord: Vector2i) -> bool:
 	return cell_coord in wall_tiles.get_used_cells()
