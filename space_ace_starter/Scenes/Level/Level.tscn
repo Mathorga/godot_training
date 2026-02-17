@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4on2i2yykp6r"]
+[gd_scene format=3 uid="uid://b4on2i2yykp6r"]
 
 [ext_resource type="PackedScene" uid="uid://cdf2n2vvpqpq3" path="res://Scenes/LevelBg/LevelBg.tscn" id="1_3hkb6"]
 [ext_resource type="PackedScene" uid="uid://cj6s025qtrnja" path="res://Scenes/ShakeCam/ShakeCam.tscn" id="2_4dwx7"]
@@ -6,18 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://c8pkpg6y6ly4y" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="4_k2uda"]
 [ext_resource type="AudioStream" uid="uid://t0l7khnjnye0" path="res://assets/sounds/loops/Mercury.wav" id="5_ksici"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=44650437]
 
-[node name="ShakeCam" parent="." instance=ExtResource("2_4dwx7")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1078715484]
+layer = -1
 
-[node name="LevelBg" parent="." instance=ExtResource("1_3hkb6")]
+[node name="BackgroundColor" type="ColorRect" parent="CanvasLayer" unique_id=902737523]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="ObjectMaker" parent="." instance=ExtResource("4_k2uda")]
+[node name="ShakeCam" parent="." unique_id=2078553448 instance=ExtResource("2_4dwx7")]
 
-[node name="Player" parent="." instance=ExtResource("3_4dwx7")]
+[node name="LevelBg" parent="." unique_id=1808205886 instance=ExtResource("1_3hkb6")]
+
+[node name="ObjectMaker" parent="." unique_id=736024470 instance=ExtResource("4_k2uda")]
+
+[node name="Player" parent="." unique_id=1399134068 instance=ExtResource("3_4dwx7")]
 position = Vector2(315, 424)
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1124732465]
 stream = ExtResource("5_ksici")
 volume_db = -10.0
 autoplay = true

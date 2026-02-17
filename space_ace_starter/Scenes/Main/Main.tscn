@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ajn46ojd0r2"]
+[gd_scene format=3 uid="uid://2ajn46ojd0r2"]
 
 [ext_resource type="Texture2D" uid="uid://b2opofve3y3we" path="res://assets/backgrounds/GalaxyUno.png" id="1_i3fi7"]
 [ext_resource type="PackedScene" uid="uid://sqr4aejsdpl5" path="res://Scenes/Sun/Sun.tscn" id="2_o8wgc"]
 [ext_resource type="AudioStream" uid="uid://ch61rkn7lovsl" path="res://assets/sounds/loops/TitleScreen.mp3" id="4_aw1lf"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=1150525829]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1900731543]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_i3fi7")
 
-[node name="MC" type="MarginContainer" parent="."]
+[node name="MC" type="MarginContainer" parent="." unique_id=975965648]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,22 +34,22 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="MC"]
+[node name="Label" type="Label" parent="MC" unique_id=1080201066]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "SPACE ACE"
 
-[node name="VB" type="VBoxContainer" parent="MC"]
+[node name="VB" type="VBoxContainer" parent="MC" unique_id=574983731]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/separation = 18
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1974379588]
 stream = ExtResource("4_aw1lf")
 volume_db = -20.0
 autoplay = true
 
-[node name="Sun" parent="." instance=ExtResource("2_o8wgc")]
+[node name="Sun" parent="." unique_id=1307159938 instance=ExtResource("2_o8wgc")]
 position = Vector2(48, 50)
 scale = Vector2(0.3, 0.3)
