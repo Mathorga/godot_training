@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs7twesq7bmwk"]
+[gd_scene format=3 uid="uid://cs7twesq7bmwk"]
 
 [ext_resource type="Script" uid="uid://brlsr3jugk3d6" path="res://Scenes/Player/Player.gd" id="1_s0eop"]
 [ext_resource type="Texture2D" uid="uid://c6t1rviea0cgn" path="res://assets/ships/ships_human_1.png" id="2_ft8w5"]
@@ -6,14 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ude3g"]
 radius = 12.0
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" unique_id=925114493]
 collision_mask = 0
 script = ExtResource("1_s0eop")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=515631693]
 z_index = 1
 texture = ExtResource("2_ft8w5")
 hframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=962127519]
 shape = SubResource("CircleShape2D_ude3g")

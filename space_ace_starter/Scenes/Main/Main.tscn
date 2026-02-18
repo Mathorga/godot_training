@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://2ajn46ojd0r2"]
 
 [ext_resource type="Texture2D" uid="uid://b2opofve3y3we" path="res://assets/backgrounds/GalaxyUno.png" id="1_i3fi7"]
+[ext_resource type="Script" uid="uid://j8y2a052svhl" path="res://Scenes/Main/main.gd" id="1_o8wgc"]
+[ext_resource type="PackedScene" uid="uid://ca62f15quhnmb" path="res://Scenes/ui_button/ui_button.tscn" id="2_i3fi7"]
 [ext_resource type="PackedScene" uid="uid://sqr4aejsdpl5" path="res://Scenes/Sun/Sun.tscn" id="2_o8wgc"]
+[ext_resource type="LabelSettings" uid="uid://c3xhbbh14mchv" path="res://Resources/title_64_label_settings.tres" id="3_w20t6"]
 [ext_resource type="AudioStream" uid="uid://ch61rkn7lovsl" path="res://assets/sounds/loops/TitleScreen.mp3" id="4_aw1lf"]
 
 [node name="Main" type="Control" unique_id=1150525829]
@@ -12,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o8wgc")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1900731543]
 layout_mode = 1
@@ -38,12 +42,21 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 size_flags_horizontal = 0
 text = "SPACE ACE"
+label_settings = ExtResource("3_w20t6")
 
 [node name="VB" type="VBoxContainer" parent="MC" unique_id=574983731]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/separation = 18
+
+[node name="PlayButton" parent="MC/VB" unique_id=949702314 instance=ExtResource("2_i3fi7")]
+layout_mode = 2
+text = "Play"
+
+[node name="QuitButton" parent="MC/VB" unique_id=1859780505 instance=ExtResource("2_i3fi7")]
+layout_mode = 2
+text = "Quit"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1974379588]
 stream = ExtResource("4_aw1lf")
