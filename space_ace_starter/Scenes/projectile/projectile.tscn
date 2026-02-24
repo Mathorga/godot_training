@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bosik8on4sbti"]
+
+[ext_resource type="PackedScene" uid="uid://qq0gjyel2fm6" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="1_tamhb"]
+[ext_resource type="Script" uid="uid://b1uxak2ggiua8" path="res://Scenes/projectile/projectile.gd" id="1_xafag"]
+
+[node name="Projectile" type="Area2D" unique_id=295531684]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_xafag")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1147932865]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131917831]
+
+[node name="OutOfTime" parent="." unique_id=1826408554 instance=ExtResource("1_tamhb")]
+life_s = 15.0
+
+[node name="OnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=196075285]
