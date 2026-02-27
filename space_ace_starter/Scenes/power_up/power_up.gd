@@ -17,11 +17,12 @@ const TEXTURES: Dictionary[PowerUpType, Resource] = {
 var _power_up_type: PowerUpType = PowerUpType.shield
 
 func _ready() -> void:
+	super._ready()
 	sprite_2d.texture = TEXTURES[_power_up_type]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	global_position.y += SPEED * delta
 
 func get_power_up_type() -> PowerUpType:
 	return _power_up_type

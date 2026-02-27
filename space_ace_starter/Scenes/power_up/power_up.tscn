@@ -9,6 +9,8 @@
 radius = 8.0
 
 [node name="PowerUp" unique_id=295531684 instance=ExtResource("1_adljp")]
+collision_layer = 16
+collision_mask = 1
 script = ExtResource("2_8g080")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1147932865]
