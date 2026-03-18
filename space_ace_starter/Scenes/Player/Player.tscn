@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brlsr3jugk3d6" path="res://Scenes/Player/Player.gd" id="1_s0eop"]
 [ext_resource type="Texture2D" uid="uid://c6t1rviea0cgn" path="res://assets/ships/ships_human_1.png" id="2_ft8w5"]
+[ext_resource type="PackedScene" uid="uid://cidsi3wywmbhq" path="res://Scenes/shield/shield.tscn" id="3_h54ih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ude3g"]
 radius = 12.0
@@ -17,3 +18,5 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=962127519]
 shape = SubResource("CircleShape2D_ude3g")
+
+[node name="Shield" parent="." unique_id=315532564 instance=ExtResource("3_h54ih")]

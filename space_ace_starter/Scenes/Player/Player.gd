@@ -1,25 +1,17 @@
 extends Area2D
-
-
 class_name Player
-
 
 const GROUP_NAME: String = "Player"
 
-
 @onready var sprite_2d: Sprite2D = $Sprite2D
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
+@onready var shield: Shield = $Shield
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
+	area_entered.connect(_on_area_entered)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_area_entered(area: Area2D) -> void:
+	if area is PowerUp:
+		match area.get_power_up_type():
+			PowerUp.PowerUpType.shield:
+				shield.enable()
