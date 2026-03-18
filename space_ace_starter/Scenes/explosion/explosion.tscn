@@ -185,6 +185,7 @@ animations = [{
 }]
 
 [node name="Explosion" type="Node2D" unique_id=1556790760]
+z_index = 1
 script = ExtResource("1_pdvjp")
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=346604217]

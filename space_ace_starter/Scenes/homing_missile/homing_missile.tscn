@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cl1l5dcu8dqwk"]
+
+[ext_resource type="PackedScene" uid="uid://bosik8on4sbti" path="res://Scenes/projectile/projectile.tscn" id="1_8ird0"]
+[ext_resource type="Script" uid="uid://bvxn5521qirsl" path="res://Scenes/homing_missile/homing_missile.gd" id="2_k3vt8"]
+[ext_resource type="Texture2D" uid="uid://bqywi64wvxcqj" path="res://assets/lasers/spaceMissiles_040.png" id="2_mc4vy"]
+[ext_resource type="Texture2D" uid="uid://b0hlsmrvemel0" path="res://assets/misc/ParticleDot.png" id="3_p3fmc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3fmc"]
+radius = 5.0
+height = 34.0
+
+[sub_resource type="Curve" id="Curve_p3fmc"]
+_data = [Vector2(0, 0.46410173), 0.0, 0.0, 0, 0, Vector2(0.67994106, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_p3fmc"]
+offsets = PackedFloat32Array(0, 0.5453125, 0.884375)
+colors = PackedColorArray(1, 1, 0, 1, 0.99359363, 0.17116717, 3.85046e-07, 1, 0.23529412, 0.10980392, 0.10980392, 1)
+
+[node name="HomingMissile" unique_id=295531684 instance=ExtResource("1_8ird0")]
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("2_k3vt8")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1147932865]
+texture = ExtResource("2_mc4vy")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2131917831]
+shape = SubResource("CapsuleShape2D_p3fmc")
+
+[node name="OutOfTime" parent="." index="2" unique_id=1826408554]
+life_s = 200.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="4" unique_id=452808031]
+z_index = -1
+position = Vector2(0, 14)
+amount = 48
+texture = ExtResource("3_p3fmc")
+lifetime = 0.25
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+linear_accel_min = -150.0
+linear_accel_max = -100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_p3fmc")
+color_ramp = SubResource("Gradient_p3fmc")
