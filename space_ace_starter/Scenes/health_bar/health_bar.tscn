@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bsqakaocrbhfg"]
+
+[ext_resource type="Texture2D" uid="uid://dew6h5ci3lnpk" path="res://assets/ui/square_shadow.png" id="1_q51lc"]
+[ext_resource type="Texture2D" uid="uid://bguk5hv0msnqt" path="res://assets/ui/progress_ph.png" id="2_adodc"]
+[ext_resource type="Script" uid="uid://4isvuimaeh40" path="res://Scenes/health_bar/health_bar.gd" id="3_adodc"]
+
+[node name="HealthBar" type="TextureProgressBar" unique_id=1205879507]
+offset_right = 48.0
+offset_bottom = 48.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_q51lc")
+texture_progress = ExtResource("2_adodc")
+script = ExtResource("3_adodc")

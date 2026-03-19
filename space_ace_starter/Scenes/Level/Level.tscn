@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cdf2n2vvpqpq3" path="res://Scenes/LevelBg/LevelBg.tscn" id="1_3hkb6"]
 [ext_resource type="Script" uid="uid://cfg0laawr4kld" path="res://Scenes/Level/level.gd" id="1_ksici"]
 [ext_resource type="PackedScene" uid="uid://cj6s025qtrnja" path="res://Scenes/ShakeCam/ShakeCam.tscn" id="2_4dwx7"]
+[ext_resource type="PackedScene" uid="uid://dkt2afsntfbnr" path="res://Scenes/game_ui/game_ui.tscn" id="2_t3e81"]
 [ext_resource type="PackedScene" uid="uid://cs7twesq7bmwk" path="res://Scenes/Player/Player.tscn" id="3_4dwx7"]
 [ext_resource type="PackedScene" uid="uid://c8pkpg6y6ly4y" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="4_k2uda"]
 [ext_resource type="AudioStream" uid="uid://t0l7khnjnye0" path="res://assets/sounds/loops/Mercury.wav" id="5_ksici"]
@@ -21,6 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=2124381556]
+
+[node name="GameUI" parent="CanvasLayer2" unique_id=474189672 instance=ExtResource("2_t3e81")]
 
 [node name="ShakeCam" parent="." unique_id=2078553448 instance=ExtResource("2_4dwx7")]
 
