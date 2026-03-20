@@ -1,13 +1,17 @@
 extends Node
 
-signal on_player_hit(v: int)
-signal on_score_updated(v: int)
+signal player_hit(val: int)
+signal player_health_restored(val: int)
+signal on_score_updated(val: int)
 signal create_explosion_requested(pos: Vector2, animation_name: String)
 signal create_power_up_requested(pos: Vector2, type: PowerUp.PowerUpType)
 signal create_bullet_requested(pos: Vector2, dir: Vector2, speed: float, type: BulletBase.BulletType)
 
-func emit_on_player_hit(v: int) -> void:
-	on_player_hit.emit(v)
+func emit_player_hit(val: int) -> void:
+	player_hit.emit(val)
+
+func emit_player_health_restored(val: int) -> void:
+	player_health_restored.emit(val)
 
 func emit_on_score_updated(v: int) -> void:
 	on_score_updated.emit(v)

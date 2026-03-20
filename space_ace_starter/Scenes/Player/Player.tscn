@@ -7,6 +7,64 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ude3g"]
 radius = 12.0
 
+[sub_resource type="Animation" id="Animation_h54ih"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+resource_name = "fly"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "turn"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wape"]
+_data = {
+&"RESET": SubResource("Animation_h54ih"),
+&"fly": SubResource("Animation_ude3g"),
+&"turn": SubResource("Animation_jmcll")
+}
+
 [node name="Player" type="Area2D" unique_id=925114493]
 collision_mask = 28
 script = ExtResource("1_s0eop")
@@ -20,3 +78,7 @@ hframes = 4
 shape = SubResource("CircleShape2D_ude3g")
 
 [node name="Shield" parent="." unique_id=315532564 instance=ExtResource("3_h54ih")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1530142811]
+libraries/ = SubResource("AnimationLibrary_4wape")
+autoplay = &"fly"

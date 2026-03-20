@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6kul3csf45eb" path="res://Scenes/game_ui/game_ui.gd" id="1_8ltpb"]
 [ext_resource type="PackedScene" uid="uid://bsqakaocrbhfg" path="res://Scenes/health_bar/health_bar.tscn" id="1_rrrjh"]
 [ext_resource type="LabelSettings" uid="uid://ctiuth450uu0k" path="res://Resources/ui_button_label_settings.tres" id="2_rrrjh"]
+[ext_resource type="AudioStream" uid="uid://boct87hp6wlp1" path="res://assets/sounds/powerup/health_16.wav" id="4_qmmd8"]
 
 [node name="GameUI" type="Control" unique_id=474189672]
 layout_mode = 3
@@ -42,3 +43,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "0000"
 label_settings = ExtResource("2_rrrjh")
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=1539224823]
+stream = ExtResource("4_qmmd8")
