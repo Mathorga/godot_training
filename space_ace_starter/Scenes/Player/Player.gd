@@ -3,7 +3,7 @@ class_name Player
 
 const GROUP_NAME: String = "Player"
 const HEALTH_BOOST: int = 25
-const BULLET_SPEED: float = 250.0
+const BULLET_SPEED: float = 350.0
 const MOVEMENT_PADDING: Vector2 = Vector2.ONE * 16.0
 
 @export var speed: float = 250.0

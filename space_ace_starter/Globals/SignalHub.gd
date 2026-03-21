@@ -16,7 +16,7 @@ func emit_player_health_restored(val: int) -> void:
 func emit_on_score_updated(v: int) -> void:
 	on_score_updated.emit(v)
 
-func emit_create_explosion_requested(pos: Vector2, animation_name: String) -> void:
+func request_create_explosion(pos: Vector2, animation_name: String) -> void:
 	create_explosion_requested.emit(pos, animation_name)
 
 func request_create_power_up(pos: Vector2, type: PowerUp.PowerUpType) -> void:

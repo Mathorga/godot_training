@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 
 func blow_up() -> void:
 	ScoreManager.increment_score(POINTS)
-	SignalHub.emit_create_explosion_requested(global_position, Explosion.EXPLODE)
+	SignalHub.request_create_explosion(global_position, Explosion.EXPLODE)
 	super()
