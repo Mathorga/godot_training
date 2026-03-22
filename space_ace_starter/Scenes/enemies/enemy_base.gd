@@ -4,6 +4,7 @@ class_name EnemyBase
 @export var points: int = 10
 @export var crash_damage: int = 10
 
+@onready var sound: AudioStreamPlayer2D = $Sound
 @onready var booms: Node2D = $Booms
 @onready var health_bar: HealthBar = $HealthBar
 @onready var hit_box: Area2D = $HitBox
@@ -11,7 +12,7 @@ class_name EnemyBase
 var _speed: float = 50.0
 
 func _ready() -> void:
-	health_bar.died.connect(die)
+	health_bar.died.connect(_on_health_bar_died)
 	hit_box.area_entered.connect(_on_area_entered)
 
 func _process(delta: float) -> void:
@@ -27,6 +28,10 @@ func make_booms() -> void:
 func die() -> void:
 	make_booms()
 	queue_free()
+
+func _on_health_bar_died() -> void:
+	SignalHub.emit_on_score_updated(points)
+	die()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is BulletBase:

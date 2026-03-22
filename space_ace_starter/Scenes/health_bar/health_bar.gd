@@ -7,8 +7,8 @@ const COLOR_HIGH: Color = Color("#33CC33")
 
 signal died
 
-@export var level_low: int = 30
-@export var level_mid: int = 65
+@export_range(0.0, 1.0) var level_low: float = 0.3
+@export_range(0.0, 1.0) var level_mid: float = 0.65
 @export var start_health: int = 100
 @export var max_health: int = 100
 
@@ -20,11 +20,11 @@ func _ready() -> void:
 	set_color()
 
 func set_color() -> void:
-	if value < level_low:
+	if value < level_low * max_health:
 		tint_progress = COLOR_LOW
 		return
 
-	if value < level_mid:
+	if value < level_mid * max_health:
 		tint_progress = COLOR_MID
 		return
 
