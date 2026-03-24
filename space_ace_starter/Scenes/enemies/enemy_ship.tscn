@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cch04ajdaq7w"]
+
+[ext_resource type="PackedScene" uid="uid://c8q1vls072048" path="res://Scenes/enemies/enemy_base.tscn" id="1_lfw8a"]
+[ext_resource type="Script" uid="uid://dwqrslhj2t8ob" path="res://Scenes/enemies/enemy_ship.gd" id="2_kqm3r"]
+
+[node name="EnemyShip" unique_id=1390140940 instance=ExtResource("1_lfw8a")]
+script = ExtResource("2_kqm3r")
+
+[node name="HealthBar" parent="." index="3" unique_id=1205879507]
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5" unique_id=1776649956]
+flip_v = true
+
+[node name="LaserTimer" type="Timer" parent="." index="6" unique_id=1942521765]
+one_shot = true
