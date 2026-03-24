@@ -146,6 +146,9 @@ animations = [{
 }]
 
 [node name="EnemyBio" unique_id=1390140940 instance=ExtResource("1_ujisv")]
+shoot_at_player = true
+bullet_wait_time = 2.0
+bullet_wait_time_var = 0.2
 
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_top = -27.0

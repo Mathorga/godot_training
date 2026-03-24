@@ -112,6 +112,10 @@ animations = [{
 }]
 
 [node name="EnemyBomber" unique_id=1390140940 instance=ExtResource("1_ptf7i")]
+shoot_at_player = true
+aims_at_player = true
+bullet_type = 2
+bullet_speed = 80.0
 
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_top = -33.0
