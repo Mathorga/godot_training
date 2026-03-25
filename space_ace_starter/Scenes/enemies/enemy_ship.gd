@@ -24,6 +24,7 @@ func _ready() -> void:
 	if _player_ref == null:
 		queue_free()
 
+	SpaceUtils.play_random_animation(sprite)
 	start_shoot_timer()
 
 func start_shoot_timer() -> void:
@@ -37,6 +38,8 @@ func die() -> void:
 
 func _on_laser_timer_timeout() -> void:
 	if not shoot_at_player: return
+
+	sound.play()
 
 	SignalHub.request_create_bullet(
 		global_position,

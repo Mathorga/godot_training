@@ -2,6 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://c8q1vls072048" path="res://Scenes/enemies/enemy_base.tscn" id="1_lfw8a"]
 [ext_resource type="Script" uid="uid://dwqrslhj2t8ob" path="res://Scenes/enemies/enemy_ship.gd" id="2_kqm3r"]
+[ext_resource type="AudioStream" uid="uid://da52b8m3s7khp" path="res://assets/sounds/lasers/sfx_wpn_laser1.wav" id="3_txwwq"]
+[ext_resource type="AudioStream" uid="uid://dffevs145pngu" path="res://assets/sounds/lasers/sfx_wpn_laser2.wav" id="4_x7ccw"]
+[ext_resource type="AudioStream" uid="uid://d0t32p468w0kn" path="res://assets/sounds/lasers/sfx_wpn_laser3.wav" id="5_vagml"]
+[ext_resource type="AudioStream" uid="uid://bt8muih1jgeya" path="res://assets/sounds/lasers/sfx_wpn_laser4.wav" id="6_p40ln"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bo4qn"]
+streams_count = 4
+stream_0/stream = ExtResource("3_txwwq")
+stream_1/stream = ExtResource("4_x7ccw")
+stream_2/stream = ExtResource("5_vagml")
+stream_3/stream = ExtResource("6_p40ln")
 
 [node name="EnemyShip" unique_id=1390140940 instance=ExtResource("1_lfw8a")]
 script = ExtResource("2_kqm3r")
@@ -13,6 +24,9 @@ bullet_dir = Vector2(0, 1)
 bullet_wait_time = 3.0
 bullet_wait_time_var = 0.5
 power_up_chance = 0.9
+
+[node name="Sound" parent="." index="1" unique_id=2087763280]
+stream = SubResource("AudioStreamRandomizer_bo4qn")
 
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_left = -12.0
