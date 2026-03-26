@@ -117,6 +117,24 @@ aims_at_player = true
 bullet_type = 2
 bullet_speed = 80.0
 
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="0" unique_id=2114663030]
+position = Vector2(-24, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="1" unique_id=2000912120]
+position = Vector2(24, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="2" unique_id=1900497731]
+position = Vector2(-11, -27)
+
+[node name="Marker2D4" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="3" unique_id=655367563]
+position = Vector2(11, -27)
+
+[node name="Marker2D5" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="4" unique_id=1704865330]
+position = Vector2(11, 27)
+
+[node name="Marker2D6" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="5" unique_id=882794992]
+position = Vector2(-12, 27)
+
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_top = -33.0
 offset_bottom = -31.0
@@ -124,6 +142,6 @@ offset_bottom = -31.0
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1017732532) index="0" unique_id=893784456]
 shape = SubResource("CapsuleShape2D_ptf7i")
 
-[node name="AnimatedSprite2D" parent="." index="5" unique_id=1776649956]
+[node name="Sprite" parent="." index="5" unique_id=1776649956]
 sprite_frames = SubResource("SpriteFrames_08wep")
 animation = &"bomber_3"

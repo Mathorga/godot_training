@@ -113,6 +113,12 @@ animations = [{
 
 [node name="EnemyZipper" unique_id=1390140940 instance=ExtResource("1_j6o7g")]
 
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="0" unique_id=1514248114]
+position = Vector2(-21, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="1" unique_id=894159689]
+position = Vector2(21, 0)
+
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_top = -18.0
 offset_bottom = -16.0
@@ -121,6 +127,6 @@ offset_bottom = -16.0
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_j6o7g")
 
-[node name="AnimatedSprite2D" parent="." index="5" unique_id=1776649956]
+[node name="Sprite" parent="." index="5" unique_id=1776649956]
 sprite_frames = SubResource("SpriteFrames_7wh2w")
 animation = &"zipper_3"

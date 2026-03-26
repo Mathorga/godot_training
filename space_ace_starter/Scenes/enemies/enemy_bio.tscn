@@ -150,6 +150,12 @@ shoot_at_player = true
 bullet_wait_time = 2.0
 bullet_wait_time_var = 0.2
 
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="0" unique_id=866045568]
+position = Vector2(0, 17)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="1" unique_id=1620229592]
+position = Vector2(0, -18)
+
 [node name="HealthBar" parent="." index="3" unique_id=1205879507]
 offset_top = -27.0
 offset_bottom = -25.0
@@ -157,6 +163,6 @@ offset_bottom = -25.0
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1017732532) index="0" unique_id=893784456]
 shape = SubResource("CapsuleShape2D_ujisv")
 
-[node name="AnimatedSprite2D" parent="." index="5" unique_id=1776649956]
+[node name="Sprite" parent="." index="5" unique_id=1776649956]
 sprite_frames = SubResource("SpriteFrames_8lorb")
 animation = &"bio_4"

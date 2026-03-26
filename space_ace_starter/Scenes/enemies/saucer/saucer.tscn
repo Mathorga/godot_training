@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://d184ndmgjug8p"]
+
+[ext_resource type="PackedScene" uid="uid://c8q1vls072048" path="res://Scenes/enemies/enemy_base.tscn" id="1_1x636"]
+[ext_resource type="Texture2D" uid="uid://dhl1td3t4abyg" path="res://assets/ships/saucer_1.png" id="2_3s5gu"]
+[ext_resource type="Script" uid="uid://dxko581vr6xcs" path="res://Scenes/enemies/saucer/saucer.gd" id="2_culj1"]
+[ext_resource type="AudioStream" uid="uid://bsovjv7kve0cv" path="res://assets/sounds/misc/sci-fi-door.wav" id="3_culj1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1abcg"]
+radius = 38.052597
+
+[sub_resource type="Animation" id="Animation_yqtoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k20vg"]
+resource_name = "die"
+length = 1.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_juxxb"]
+resource_name = "shoot"
+length = 2.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_culj1")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"fire_missile"
+}, {
+"args": [false],
+"method": &"set_shooting"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kk01m"]
+resource_name = "spin"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umrbw"]
+_data = {
+&"RESET": SubResource("Animation_yqtoe"),
+&"die": SubResource("Animation_k20vg"),
+&"shoot": SubResource("Animation_juxxb"),
+&"spin": SubResource("Animation_kk01m")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_culj1"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k20vg"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1abcg"]
+animation = &"shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yqtoe"]
+animation = &"spin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k20vg"]
+advance_mode = 2
+advance_expression = "_is_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_juxxb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kk01m"]
+advance_mode = 2
+advance_expression = "_is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umrbw"]
+advance_mode = 2
+advance_expression = "_is_dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_culj1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1abcg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3s5gu"]
+states/RESET/node = SubResource("AnimationNodeAnimation_culj1")
+states/RESET/position = Vector2(348.6667, 100.22222)
+states/die/node = SubResource("AnimationNodeAnimation_k20vg")
+states/die/position = Vector2(564.66675, 278)
+states/shoot/node = SubResource("AnimationNodeAnimation_1abcg")
+states/shoot/position = Vector2(650, 100.246925)
+states/spin/node = SubResource("AnimationNodeAnimation_yqtoe")
+states/spin/position = Vector2(479.33334, 99.70371)
+transitions = ["spin", "shoot", SubResource("AnimationNodeStateMachineTransition_k20vg"), "shoot", "spin", SubResource("AnimationNodeStateMachineTransition_juxxb"), "shoot", "die", SubResource("AnimationNodeStateMachineTransition_kk01m"), "spin", "die", SubResource("AnimationNodeStateMachineTransition_umrbw"), "RESET", "spin", SubResource("AnimationNodeStateMachineTransition_culj1"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_1abcg")]
+graph_offset = Vector2(-538, -180)
+
+[node name="Saucer" unique_id=1390140940 instance=ExtResource("1_1x636")]
+script = ExtResource("2_culj1")
+
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="0" unique_id=678482706]
+position = Vector2(-30, -23)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="1" unique_id=1477531314]
+position = Vector2(30, -23)
+
+[node name="Marker2D3" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="2" unique_id=1070535169]
+position = Vector2(30, 23)
+
+[node name="Marker2D4" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="3" unique_id=1679311344]
+position = Vector2(-30, 23)
+
+[node name="Marker2D5" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="4" unique_id=1601870933]
+
+[node name="Marker2D6" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="5" unique_id=568402958]
+position = Vector2(0, -38)
+
+[node name="Marker2D7" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="6" unique_id=1870496669]
+position = Vector2(0, 38)
+
+[node name="Marker2D8" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="7" unique_id=1700229965]
+position = Vector2(-38, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(478807096) index="8" unique_id=329396114]
+position = Vector2(38, 0)
+
+[node name="HealthBar" parent="." index="3" unique_id=1205879507]
+offset_left = -32.0
+offset_top = -51.0
+offset_right = 32.0
+offset_bottom = -47.0
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1017732532) index="0" unique_id=893784456]
+shape = SubResource("CircleShape2D_1abcg")
+
+[node name="Sprite" type="Sprite2D" parent="." index="5" unique_id=2027603979]
+texture = ExtResource("2_3s5gu")
+offset = Vector2(0, 3)
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=337595903]
+libraries/ = SubResource("AnimationLibrary_umrbw")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="7" unique_id=239248023]
+deterministic = false
+tree_root = SubResource("AnimationNodeStateMachine_3s5gu")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="ShootTimer" type="Timer" parent="." index="8" unique_id=355094642]
+wait_time = 8.0
+autostart = true

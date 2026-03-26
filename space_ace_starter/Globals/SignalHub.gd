@@ -6,6 +6,7 @@ signal on_score_updated(val: int)
 signal create_explosion_requested(pos: Vector2, animation_name: String)
 signal create_power_up_requested(pos: Vector2, type: PowerUp.PowerUpType)
 signal create_bullet_requested(pos: Vector2, dir: Vector2, speed: float, type: BulletBase.BulletType)
+signal create_homing_missile_requested(pos: Vector2)
 
 func emit_player_hit(val: int) -> void:
 	player_hit.emit(val)
@@ -27,3 +28,6 @@ func request_create_rand_power_up(pos: Vector2) -> void:
 
 func request_create_bullet(pos: Vector2, dir: Vector2, speed: float, type: BulletBase.BulletType) -> void:
 	create_bullet_requested.emit(pos, dir, speed, type)
+
+func request_create_homing_missile(pos: Vector2) -> void:
+	create_homing_missile_requested.emit(pos)
