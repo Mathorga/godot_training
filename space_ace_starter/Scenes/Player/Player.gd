@@ -45,3 +45,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 	if area is Projectile:
 		SignalHub.emit_player_hit(area.get_damage())
+		return
+
+	if area.get_parent() is EnemyBase:
+		SignalHub.emit_player_hit(area.get_parent().crash_damage)
+		return

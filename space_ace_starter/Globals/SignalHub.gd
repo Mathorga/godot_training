@@ -2,6 +2,7 @@ extends Node
 
 signal player_hit(val: int)
 signal player_health_restored(val: int)
+signal player_died
 signal on_score_updated(val: int)
 signal create_explosion_requested(pos: Vector2, animation_name: String)
 signal create_power_up_requested(pos: Vector2, type: PowerUp.PowerUpType)
@@ -13,6 +14,9 @@ func emit_player_hit(val: int) -> void:
 
 func emit_player_health_restored(val: int) -> void:
 	player_health_restored.emit(val)
+
+func emit_player_died() -> void:
+	player_died.emit()
 
 func emit_on_score_updated(v: int) -> void:
 	on_score_updated.emit(v)

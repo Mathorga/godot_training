@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dl5rtcxgjncgx"]
+
+[ext_resource type="Script" uid="uid://bag48o2fddlo1" path="res://Scenes/game_over_ui/game_over_ui.gd" id="1_cvnlh"]
+[ext_resource type="LabelSettings" uid="uid://c3xhbbh14mchv" path="res://Resources/title_64_label_settings.tres" id="1_sqp0s"]
+[ext_resource type="LabelSettings" uid="uid://ctiuth450uu0k" path="res://Resources/ui_button_label_settings.tres" id="2_cvnlh"]
+
+[node name="GameOverUI" type="Control" unique_id=1708302953]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cvnlh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1842332765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7137255, 0.27450982, 1, 0.18039216)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1667367580]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="VBoxContainer" unique_id=69463991]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = ExtResource("1_sqp0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=1072707522]
+visible = false
+layout_mode = 2
+text = "SCORE: XXX"
+label_settings = ExtResource("2_cvnlh")
+horizontal_alignment = 1
+vertical_alignment = 1
