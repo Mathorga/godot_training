@@ -21,6 +21,9 @@ func _process(delta: float) -> void:
 	if progress_ratio > 0.99:
 		queue_free()
 
+func setup(speed: float) -> void:
+	_speed = speed
+
 func make_booms() -> void:
 	for boom in booms.get_children():
 		SignalHub.request_create_explosion(boom.global_position, Explosion.BOOM)
