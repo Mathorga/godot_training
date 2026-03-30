@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c8pkpg6y6ly4y" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="4_k2uda"]
 [ext_resource type="AudioStream" uid="uid://t0l7khnjnye0" path="res://assets/sounds/loops/Mercury.wav" id="5_ksici"]
 [ext_resource type="PackedScene" uid="uid://cl1l5dcu8dqwk" path="res://Scenes/homing_missile/homing_missile.tscn" id="7_8gphe"]
+[ext_resource type="PackedScene" uid="uid://0xn4impoqojo" path="res://Scenes/saucer_manager/saucer_manager.tscn" id="7_s0x6l"]
 [ext_resource type="PackedScene" uid="uid://dhmbb8btui3hp" path="res://Scenes/wave_manager/wave_manager.tscn" id="10_aei0q"]
 
 [node name="Level" type="Node2D" unique_id=44650437]
@@ -36,6 +37,8 @@ color = Color(0, 0, 0, 1)
 [node name="LevelBg" parent="." unique_id=1808205886 instance=ExtResource("1_3hkb6")]
 
 [node name="WaveManager" parent="." unique_id=1095752140 instance=ExtResource("10_aei0q")]
+
+[node name="SaucerManager" parent="." unique_id=489195355 instance=ExtResource("7_s0x6l")]
 
 [node name="ObjectMaker" parent="." unique_id=736024470 instance=ExtResource("4_k2uda")]
 
