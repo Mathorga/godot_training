@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ctt2xms8fju1e"]
+
+[ext_resource type="Texture2D" uid="uid://q174j11thtnv" path="res://assets/images/soldier1_gun.png" id="1_sspvn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sspvn"]
+radius = 20.0
+
+[node name="NPC" type="CharacterBody2D" unique_id=1394987986]
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1606679097]
+offset_left = -29.0
+offset_top = -111.0
+offset_right = 13.0
+offset_bottom = -36.0
+text = "line 1
+line 2
+line 3"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795471250]
+texture = ExtResource("1_sspvn")
+offset = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=352371017]
+shape = SubResource("CircleShape2D_sspvn")
+
+[node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=706042698]
+debug_enabled = true

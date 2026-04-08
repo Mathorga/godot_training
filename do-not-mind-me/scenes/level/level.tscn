@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cc5cwdles1sw4" path="res://scenes/game_ui/game_ui.tscn" id="1_h3e3j"]
 [ext_resource type="TileSet" uid="uid://b2bx07437xptc" path="res://resources/level_tiles.tres" id="2_nbgty"]
+[ext_resource type="PackedScene" uid="uid://ctt2xms8fju1e" path="res://scenes/npc/npc.tscn" id="3_i166f"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nbgty"]
+vertices = PackedVector2Array(611.3203, 461.07813, 614.6719, 563.9531, 143.04688, 562.03906, 367.89844, 463.07813, 370.10156, 239.95313, 144.9375, 208.92188, 269, 207.92188, 269, 144, 564, 144, 564, 240.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(7, 8, 9, 4, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(135, 199, 133, 572, 625, 574, 621, 451, 378, 453, 380, 250, 574, 251, 574, 134, 259, 134, 259, 198)])
 
 [node name="Level" type="Node2D" unique_id=1458993899]
 
@@ -25,3 +31,9 @@ tile_set = ExtResource("2_nbgty")
 
 [node name="Floors" type="TileMapLayer" parent="Tiles" unique_id=413193609]
 tile_set = ExtResource("2_nbgty")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=847403496]
+navigation_polygon = SubResource("NavigationPolygon_nbgty")
+
+[node name="NPC" parent="." unique_id=1394987986 instance=ExtResource("3_i166f")]
+position = Vector2(744, 399)
