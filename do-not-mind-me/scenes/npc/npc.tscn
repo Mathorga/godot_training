@@ -1,20 +1,23 @@
 [gd_scene format=3 uid="uid://ctt2xms8fju1e"]
 
+[ext_resource type="Script" uid="uid://dr2s4je5vgicw" path="res://scenes/npc/npc.gd" id="1_pcwmf"]
 [ext_resource type="Texture2D" uid="uid://q174j11thtnv" path="res://assets/images/soldier1_gun.png" id="1_sspvn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sspvn"]
 radius = 20.0
 
 [node name="NPC" type="CharacterBody2D" unique_id=1394987986]
+script = ExtResource("1_pcwmf")
 
 [node name="DebugLabel" type="Label" parent="." unique_id=1606679097]
 offset_left = -29.0
-offset_top = -111.0
+offset_top = -131.0
 offset_right = 13.0
-offset_bottom = -36.0
+offset_bottom = -30.0
 text = "line 1
 line 2
-line 3"
+line 3
+line 4"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795471250]
 texture = ExtResource("1_sspvn")
@@ -25,3 +28,6 @@ shape = SubResource("CircleShape2D_sspvn")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=706042698]
 debug_enabled = true
+debug_use_custom = true
+debug_path_custom_point_size = 5.0
+debug_path_custom_line_width = 2.0

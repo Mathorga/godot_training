@@ -36,4 +36,4 @@ tile_set = ExtResource("2_nbgty")
 navigation_polygon = SubResource("NavigationPolygon_nbgty")
 
 [node name="NPC" parent="." unique_id=1394987986 instance=ExtResource("3_i166f")]
-position = Vector2(744, 399)
+position = Vector2(509, 192)
