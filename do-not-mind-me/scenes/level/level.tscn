@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://ctt2xms8fju1e" path="res://scenes/npc/npc.tscn" id="3_i166f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nbgty"]
-vertices = PackedVector2Array(611.3203, 461.07813, 614.6719, 563.9531, 143.04688, 562.03906, 367.89844, 463.07813, 370.10156, 239.95313, 144.9375, 208.92188, 269, 207.92188, 269, 144, 564, 144, 564, 240.9375)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(7, 8, 9, 4, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(135, 199, 133, 572, 625, 574, 621, 451, 378, 453, 380, 250, 574, 251, 574, 134, 259, 134, 259, 198)])
+vertices = PackedVector2Array(591, 463.89844, 743.9531, 558.0625, 143.04688, 561.9297, 365.04688, 466.10156, 742.03906, 151.84375, 591, 243.10156, 269, 144.15625, 363.95313, 240.89844, 269, 207.92188, 144.9375, 208.92188)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7, 8), PackedInt32Array(7, 3, 2, 9, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(135, 199, 133, 572, 754, 568, 752, 142, 259, 134, 259, 198)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_i166f"]
+vertices = PackedVector2Array(1004.96875, 555.8828, 852, 554.1094, 852, 154.77344, 1004.02344, 151.22656)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(842, 145, 1014, 141, 1015, 566, 842, 564)])
 
 [node name="Level" type="Node2D" unique_id=1458993899]
 
@@ -35,5 +40,20 @@ tile_set = ExtResource("2_nbgty")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=847403496]
 navigation_polygon = SubResource("NavigationPolygon_nbgty")
 
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D" unique_id=1618600404]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(374, 251, 581, 253, 581, 454, 375, 456)
+
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="." unique_id=1858157596]
+navigation_polygon = SubResource("NavigationPolygon_i166f")
+
 [node name="NPC" parent="." unique_id=1394987986 instance=ExtResource("3_i166f")]
 position = Vector2(509, 192)
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=1827379126]
+start_position = Vector2(871, 284)
+end_position = Vector2(709, 283)
+
+[node name="NavigationLink2D2" type="NavigationLink2D" parent="." unique_id=280360291]
+start_position = Vector2(886, 481)
+end_position = Vector2(707, 479)

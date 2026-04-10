@@ -15,10 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	_set_label()
-
 	_navigate()
-
-	move_and_slide()
 
 func _navigate() -> void:
 	if nav_agent.is_navigation_finished(): return
@@ -26,6 +23,7 @@ func _navigate() -> void:
 	var next_pos: Vector2 = nav_agent.get_next_path_position()
 	rotation = global_position.direction_to(next_pos).angle()
 	velocity = transform.x * SPEED
+	move_and_slide()
 
 func _set_label() -> void:
 	var label_content: String = ""
