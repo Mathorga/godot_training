@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://brj02e1bvkvuo"]
+
+[ext_resource type="Texture2D" uid="uid://bkqcal8m30jh6" path="res://assets/images/survivor1_gun.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://boxdtd8np5f1f" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
+radius = 17.029387
+
+[node name="Player" type="CharacterBody2D" unique_id=151469056]
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=115002036]
+texture = ExtResource("1_8afob")
+offset = Vector2(10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=178391429]
+shape = SubResource("CircleShape2D_8afob")

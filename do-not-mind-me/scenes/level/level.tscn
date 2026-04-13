@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b2bx07437xptc" path="res://resources/level_tiles.tres" id="2_nbgty"]
 [ext_resource type="PackedScene" uid="uid://ctt2xms8fju1e" path="res://scenes/npc/npc.tscn" id="3_i166f"]
 [ext_resource type="PackedScene" uid="uid://07t5i8ipwntu" path="res://scenes/waypoint/waypoint.tscn" id="4_qkmgm"]
+[ext_resource type="PackedScene" uid="uid://brj02e1bvkvuo" path="res://scenes/player/player.tscn" id="5_hnne4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nbgty"]
 vertices = PackedVector2Array(591, 463.89844, 743.9531, 558.0625, 143.04688, 561.9297, 365.04688, 466.10156, 742.03906, 151.84375, 591, 243.10156, 269, 144.15625, 363.95313, 240.89844, 269, 207.92188, 144.9375, 208.92188)
@@ -79,3 +80,6 @@ position = Vector2(281, 250)
 
 [node name="Waypoint5" parent="PatrolPoints" unique_id=1886637039 instance=ExtResource("4_qkmgm")]
 position = Vector2(438, 187)
+
+[node name="Player" parent="." unique_id=151469056 instance=ExtResource("5_hnne4")]
+position = Vector2(664, 413)
