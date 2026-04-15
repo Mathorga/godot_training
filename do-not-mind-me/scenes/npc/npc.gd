@@ -34,10 +34,16 @@ func _ready() -> void:
 	_read_waypoints()
 
 func _physics_process(_delta: float) -> void:
+	_detect_player()
 	_process_behavior()
 	_move()
 	_update_raycast()
 	_set_label()
+
+func _set_state(new_state: EnemyState) -> void:
+	if _current_state == new_state: return
+
+	_current_state = new_state
 
 func _process_behavior() -> void:
 	match _current_state:
@@ -53,10 +59,19 @@ func _process_patroling() -> void:
 		_start_patrol()
 
 func _process_chasing() -> void:
-	pass
+	nav_agent.target_position = _player.global_position
 
 func _process_searching() -> void:
-	pass
+	if nav_agent.is_navigation_finished():
+		_set_state(EnemyState.patroling)
+
+func _detect_player() -> void:
+	if _can_see_player():
+		_set_state(EnemyState.chasing)
+		return
+
+	if _current_state == EnemyState.chasing:
+		_set_state(EnemyState.searching)
 
 func _update_raycast() -> void:
 	player_detector.look_at(_player.global_position)
