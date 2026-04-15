@@ -27,7 +27,11 @@ offset = Vector2(10, 0)
 shape = SubResource("CircleShape2D_sspvn")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=706042698]
+path_desired_distance = 10.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_point_size = 5.0
 debug_path_custom_line_width = 2.0
+
+[node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1070760433]
+target_position = Vector2(400, 0)

@@ -9,29 +9,37 @@ enum EnemyState {
 
 const SPEED: float = 100.0
 
+## Field of view in degrees. This is computed left and right, so it actually counts as half fov.
+const FOV: float = 60
+
 @export var patrol_points: NodePath
 
 @onready var debug_label: Label = $DebugLabel
 @onready var nav_agent: NavigationAgent2D = $NavAgent
+@onready var player_detector: RayCast2D = $PlayerDetector
 
 var _current_state: EnemyState = EnemyState.patroling
 var _waypoints: Array[Vector2] = []
 var _current_target: int = 0
+var _player: Player
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("set_target"):
 		nav_agent.target_position = get_global_mouse_position()
 
 func _ready() -> void:
-	print(nav_agent.is_navigation_finished())
+	_player = get_tree().get_first_node_in_group(Player.GROUP_NAME)
+	if _player == null: queue_free()
+
 	_read_waypoints()
 
 func _physics_process(_delta: float) -> void:
-	_update_movement()
-	_navigate()
+	_process_behavior()
+	_move()
+	_update_raycast()
 	_set_label()
 
-func _update_movement() -> void:
+func _process_behavior() -> void:
 	match _current_state:
 		EnemyState.patroling:
 			_process_patroling()
@@ -50,6 +58,20 @@ func _process_chasing() -> void:
 func _process_searching() -> void:
 	pass
 
+func _update_raycast() -> void:
+	player_detector.look_at(_player.global_position)
+
+func _player_visible() -> bool:
+	return player_detector.get_collider() is Player
+
+func _can_see_player() -> bool:
+	return _player_visible() and abs(_get_fov_angle()) < FOV
+
+func _get_fov_angle() -> float:
+	var dir_to_player: Vector2 = global_position.direction_to(_player.global_position)
+	var angle_to_player: float = transform.x.angle_to(dir_to_player)
+	return rad_to_deg(angle_to_player)
+
 func _start_patrol() -> void:
 	if _waypoints.is_empty(): return
 	nav_agent.target_position = _waypoints[_current_target]
@@ -66,7 +88,7 @@ func _read_waypoints() -> void:
 		if not child is Node2D: break
 		_waypoints.append(child.global_position)
 
-func _navigate() -> void:
+func _move() -> void:
 	if nav_agent.is_navigation_finished():
 		return
 
@@ -79,7 +101,6 @@ func _set_label() -> void:
 	var label_content: String = ""
 	label_content += "CS: %s\n" % EnemyState.keys()[_current_state]
 	label_content += "FD: %s\n" % nav_agent.is_navigation_finished()
-	label_content += "T_RD: %s\n" % nav_agent.is_target_reached()
-	label_content += "T_RBL: %s\n" % nav_agent.is_target_reachable()
-	label_content += "T_POS: %s\n" % nav_agent.target_position
+	label_content += "P_VBL: %s\n" % _can_see_player()
+	label_content += "FOV: %.0f\n" % _get_fov_angle()
 	debug_label.text = label_content
