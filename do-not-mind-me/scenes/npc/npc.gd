@@ -17,6 +17,9 @@ const FOV: float = 60
 @onready var debug_label: Label = $DebugLabel
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var player_detector: RayCast2D = $PlayerDetector
+@onready var gasp_sound: AudioStreamPlayer2D = $GaspSound
+@onready var warning_sign: Sprite2D = $WarningSign
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var _current_state: EnemyState = EnemyState.patroling
 var _waypoints: Array[Vector2] = []
@@ -31,17 +34,31 @@ func _ready() -> void:
 	_player = get_tree().get_first_node_in_group(Player.GROUP_NAME)
 	if _player == null: queue_free()
 
+	warning_sign.hide()
+
 	_read_waypoints()
 
 func _physics_process(_delta: float) -> void:
 	_detect_player()
 	_process_behavior()
 	_move()
-	_update_raycast()
+	_update_raycast() 
 	_set_label()
 
 func _set_state(new_state: EnemyState) -> void:
 	if _current_state == new_state: return
+
+	if _current_state == EnemyState.searching:
+		warning_sign.hide()
+
+	match new_state:
+		EnemyState.searching:
+			warning_sign.show()
+		EnemyState.chasing:
+			gasp_sound.play()
+			animation_player.play("alert")
+		EnemyState.patroling:
+			animation_player.play("RESET")
 
 	_current_state = new_state
 

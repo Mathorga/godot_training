@@ -2,9 +2,58 @@
 
 [ext_resource type="Script" uid="uid://dr2s4je5vgicw" path="res://scenes/npc/npc.gd" id="1_pcwmf"]
 [ext_resource type="Texture2D" uid="uid://q174j11thtnv" path="res://assets/images/soldier1_gun.png" id="1_sspvn"]
+[ext_resource type="AudioStream" uid="uid://bh6s5qbllif8n" path="res://assets/sounds/gasp1.wav" id="3_ay68w"]
+[ext_resource type="AudioStream" uid="uid://bvv2wwwd7wvmw" path="res://assets/sounds/gasp2.wav" id="4_evswx"]
+[ext_resource type="AudioStream" uid="uid://csrkl5ijubwnc" path="res://assets/sounds/gasp3.wav" id="5_p70cs"]
+[ext_resource type="Texture2D" uid="uid://beyle7mvbebeu" path="res://assets/images/running_1.png" id="6_ay68w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sspvn"]
 radius = 20.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hlwrr"]
+streams_count = 3
+stream_0/stream = ExtResource("3_ay68w")
+stream_1/stream = ExtResource("4_evswx")
+stream_2/stream = ExtResource("5_p70cs")
+
+[sub_resource type="Animation" id="Animation_ay68w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_evswx"]
+resource_name = "alert"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.69600046, 0, 0.111263074, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p70cs"]
+_data = {
+&"RESET": SubResource("Animation_ay68w"),
+&"alert": SubResource("Animation_evswx")
+}
 
 [node name="NPC" type="CharacterBody2D" unique_id=1394987986]
 script = ExtResource("1_pcwmf")
@@ -35,3 +84,15 @@ debug_path_custom_line_width = 2.0
 
 [node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1070760433]
 target_position = Vector2(400, 0)
+
+[node name="GaspSound" type="AudioStreamPlayer2D" parent="." unique_id=2016534730]
+stream = SubResource("AudioStreamRandomizer_hlwrr")
+
+[node name="WarningSign" type="Sprite2D" parent="." unique_id=153082735]
+position = Vector2(0, -3)
+rotation = -0.5235988
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_ay68w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=234147908]
+libraries/ = SubResource("AnimationLibrary_p70cs")
