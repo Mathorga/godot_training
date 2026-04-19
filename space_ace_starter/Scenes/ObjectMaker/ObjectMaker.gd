@@ -41,8 +41,7 @@ func _on_create_bullet_requested(pos: Vector2, dir: Vector2, speed: float, type:
 			bullet_scene = BOMB_SCENE
 
 	var bullet: BulletBase = bullet_scene.instantiate()
-	if bullet == null:
-		return
+	if bullet == null: return
 
 	bullet.setup(dir, speed)
 	call_deferred(ADD_OBJECT, bullet, pos)

@@ -7,10 +7,18 @@ enum EnemyState {
 	searching
 }
 
-const SPEED: float = 100.0
+const SPEED: Dictionary[EnemyState, float] = {
+	EnemyState.patroling: 60.0,
+	EnemyState.chasing: 100.0,
+	EnemyState.searching: 80.0
+}
 
 ## Field of view in degrees. This is computed left and right, so it actually counts as half fov.
-const FOV: float = 60
+const FOV: Dictionary[EnemyState, float] = {
+	EnemyState.patroling: 60.0,
+	EnemyState.chasing: 120.0,
+	EnemyState.searching: 100.0
+}
 
 @export var patrol_points: NodePath
 
@@ -20,6 +28,7 @@ const FOV: float = 60
 @onready var gasp_sound: AudioStreamPlayer2D = $GaspSound
 @onready var warning_sign: Sprite2D = $WarningSign
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shoot_timer: Timer = $ShootTimer
 
 var _current_state: EnemyState = EnemyState.patroling
 var _waypoints: Array[Vector2] = []
@@ -31,6 +40,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		nav_agent.target_position = get_global_mouse_position()
 
 func _ready() -> void:
+	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
 	_player = get_tree().get_first_node_in_group(Player.GROUP_NAME)
 	if _player == null: queue_free()
 
@@ -97,7 +107,7 @@ func _player_visible() -> bool:
 	return player_detector.get_collider() is Player
 
 func _can_see_player() -> bool:
-	return _player_visible() and abs(_get_fov_angle()) < FOV
+	return _player_visible() and abs(_get_fov_angle()) < FOV[_current_state]
 
 func _get_fov_angle() -> float:
 	var dir_to_player: Vector2 = global_position.direction_to(_player.global_position)
@@ -126,7 +136,7 @@ func _move() -> void:
 
 	var next_pos: Vector2 = nav_agent.get_next_path_position()
 	rotation = global_position.direction_to(next_pos).angle()
-	velocity = transform.x * SPEED
+	velocity = transform.x * SPEED[_current_state]
 	move_and_slide()
 
 func _set_label() -> void:
@@ -136,3 +146,8 @@ func _set_label() -> void:
 	label_content += "P_VBL: %s\n" % _can_see_player()
 	label_content += "FOV: %.0f\n" % _get_fov_angle()
 	debug_label.text = label_content
+
+func _on_shoot_timer_timeout() -> void:
+	if _current_state != EnemyState.chasing: return
+
+	SignalHub.request_bullet_spawn(global_position + transform.x * 50.0)

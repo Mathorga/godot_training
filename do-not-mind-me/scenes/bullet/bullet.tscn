@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bl3aa5twetsum"]
+
+[ext_resource type="Texture2D" uid="uid://c43oqy5pu20jc" path="res://assets/images/bulletRed_outline.png" id="1_7c8un"]
+[ext_resource type="Script" uid="uid://horw7q6hi2wq" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
+[ext_resource type="AudioStream" uid="uid://kxtbiw2qum84" path="res://assets/sounds/sfx_wpn_laser2.wav" id="3_c6pnf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7c8un"]
+radius = 5.0
+height = 16.0
+
+[node name="Bullet" type="Area2D" unique_id=412260379]
+script = ExtResource("1_83itf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=504705509]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7c8un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=868842222]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7c8un")
+
+[node name="OnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=803745898]
+rect = Rect2(-10, -7.5, 20, 15)
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="." unique_id=807616560]
+stream = ExtResource("3_c6pnf")

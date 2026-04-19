@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cc5cwdles1sw4" path="res://scenes/game_ui/game_ui.tscn" id="1_h3e3j"]
 [ext_resource type="TileSet" uid="uid://b2bx07437xptc" path="res://resources/level_tiles.tres" id="2_nbgty"]
 [ext_resource type="PackedScene" uid="uid://ctt2xms8fju1e" path="res://scenes/npc/npc.tscn" id="3_i166f"]
+[ext_resource type="PackedScene" uid="uid://cb25rwpe1af5b" path="res://scenes/object_maker/object_maker.tscn" id="3_wcngd"]
 [ext_resource type="PackedScene" uid="uid://07t5i8ipwntu" path="res://scenes/waypoint/waypoint.tscn" id="4_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://brj02e1bvkvuo" path="res://scenes/player/player.tscn" id="5_hnne4"]
 
@@ -43,6 +44,8 @@ navigation_polygon = SubResource("NavigationPolygon_hnne4")
 [node name="NPC" parent="." unique_id=1394987986 instance=ExtResource("3_i166f")]
 position = Vector2(509, 192)
 patrol_points = NodePath("../PatrolPoints")
+
+[node name="ObjectMaker" parent="." unique_id=391709481 instance=ExtResource("3_wcngd")]
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=797337345]
 

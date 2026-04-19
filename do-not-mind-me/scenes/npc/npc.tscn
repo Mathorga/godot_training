@@ -96,3 +96,6 @@ texture = ExtResource("6_ay68w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=234147908]
 libraries/ = SubResource("AnimationLibrary_p70cs")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=16828090]
+autostart = true
