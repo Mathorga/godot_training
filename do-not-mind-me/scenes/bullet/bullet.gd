@@ -15,7 +15,6 @@ func _ready() -> void:
 	on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 
 	var player: Player = get_tree().get_first_node_in_group(Player.GROUP_NAME)
-	print("PLAYER: ", player)
 	if player == null: queue_free()
 
 	if player != null: laser_sound.play()
@@ -27,7 +26,6 @@ func _process(delta: float) -> void:
 	global_position += _dir * SPEED * delta
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("BULLET_HIT")
 	queue_free()
 
 func _on_screen_exited() -> void:

@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cb25rwpe1af5b" path="res://scenes/object_maker/object_maker.tscn" id="3_wcngd"]
 [ext_resource type="PackedScene" uid="uid://07t5i8ipwntu" path="res://scenes/waypoint/waypoint.tscn" id="4_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://brj02e1bvkvuo" path="res://scenes/player/player.tscn" id="5_hnne4"]
+[ext_resource type="PackedScene" uid="uid://bll0k0gshfrry" path="res://scenes/exit/exit.tscn" id="7_wcngd"]
+[ext_resource type="PackedScene" uid="uid://b46rphm1ne7h" path="res://scenes/pickup/pickup.tscn" id="8_xv074"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hnne4"]
 vertices = PackedVector2Array(608, 480, 992, 544, 160, 544, 352, 480, 160, 224, 288, 224, 352, 224, 288, 160, 864, 288, 864, 160, 992, 160, 736, 288, 608, 224, 736, 160)
@@ -69,3 +71,15 @@ position = Vector2(438, 187)
 
 [node name="Player" parent="." unique_id=151469056 instance=ExtResource("5_hnne4")]
 position = Vector2(664, 413)
+
+[node name="Exit" parent="." unique_id=913554580 instance=ExtResource("7_wcngd")]
+position = Vector2(931, 171)
+
+[node name="Pickup" parent="." unique_id=1864101041 instance=ExtResource("8_xv074")]
+position = Vector2(245, 448)
+
+[node name="Pickup2" parent="." unique_id=1778985549 instance=ExtResource("8_xv074")]
+position = Vector2(251, 316)
+
+[node name="Pickup3" parent="." unique_id=896817595 instance=ExtResource("8_xv074")]
+position = Vector2(860, 380)
