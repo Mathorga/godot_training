@@ -25,7 +25,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position += _dir * SPEED * delta
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		SignalHub.emit_player_died()
+
+	SignalHub.request_boom_spawn(global_position)
 	queue_free()
 
 func _on_screen_exited() -> void:

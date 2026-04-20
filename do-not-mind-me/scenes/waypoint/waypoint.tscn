@@ -5,4 +5,5 @@
 [node name="Waypoint" type="Marker2D" unique_id=784397513]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688556748]
+visible = false
 texture = ExtResource("1_xfj44")

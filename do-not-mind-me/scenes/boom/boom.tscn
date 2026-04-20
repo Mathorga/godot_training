@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://541wc7llxpe3"]
+
+[ext_resource type="Script" uid="uid://qguxqy5e5q5h" path="res://scenes/boom/boom.gd" id="1_48g51"]
+[ext_resource type="Texture2D" uid="uid://cjjpn5hivar5n" path="res://assets/spritesheets/EXPLOSION_ANIMATION.png" id="1_gei4x"]
+[ext_resource type="AudioStream" uid="uid://c0vqbp2n8s4mn" path="res://assets/sounds/sfx_exp_medium4.wav" id="2_0ggvr"]
+
+[sub_resource type="Animation" id="Animation_824kv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0ggvr"]
+resource_name = "boom"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 1.51,
+"start_offset": 0.0,
+"stream": ExtResource("2_0ggvr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48g51"]
+_data = {
+&"RESET": SubResource("Animation_824kv"),
+&"boom": SubResource("Animation_0ggvr")
+}
+
+[node name="Boom" type="Node2D" unique_id=1244181913]
+script = ExtResource("1_48g51")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430915846]
+texture = ExtResource("1_gei4x")
+hframes = 6
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=440343178]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1919769894]
+libraries/ = SubResource("AnimationLibrary_48g51")
+autoplay = &"boom"

@@ -29,6 +29,7 @@ const FOV: Dictionary[EnemyState, float] = {
 @onready var warning_sign: Sprite2D = $WarningSign
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var hit_box: Area2D = $HitBox
 
 var _current_state: EnemyState = EnemyState.patroling
 var _waypoints: Array[Vector2] = []
@@ -41,6 +42,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	hit_box.body_entered.connect(_on_hit_area_triggered)
 	_player = get_tree().get_first_node_in_group(Player.GROUP_NAME)
 	if _player == null: queue_free()
 
@@ -151,3 +153,7 @@ func _on_shoot_timer_timeout() -> void:
 	if _current_state != EnemyState.chasing: return
 
 	SignalHub.request_bullet_spawn(global_position + transform.x * 50.0)
+
+func _on_hit_area_triggered(body: Node2D) -> void:
+	if body is Player:
+		SignalHub.emit_player_died()
